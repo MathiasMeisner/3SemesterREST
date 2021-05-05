@@ -8,7 +8,7 @@ namespace _3SemesterREST.Models
     public class Car
     {
         public int Id { get; set; }
-        public int NumberOfCars { get; set; }
+        //public int NumberOfCars { get; set; }
         public string ColorOfCar { get; set; }
         public int IsIn { get; set; }
     }

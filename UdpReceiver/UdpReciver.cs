@@ -37,10 +37,10 @@ namespace UdpReceiver
                 string recivedData = Encoding.ASCII.GetString(recivedBytes);
 
                 // splidt oplysning op i hver deres felt af et string array
-                string[] data = recivedData.Split("");
+                string[] data = recivedData.Split(" ");
 
                 // ligger oplysninger hen modellens properties 
-                car.Farve = data[0];
+                car.ColorOfCar = data[0];
 
                 // laver det om til tal fra string inden bliver lagt over i properties
                 car.IsIn = Int32.Parse(data[1]);

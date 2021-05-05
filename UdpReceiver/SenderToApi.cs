@@ -16,12 +16,11 @@ namespace UdpReceiver
         /// </summary>
         public static async Task<TOut> Post<TIn, TOut>(string uri, TIn item)
         {
-            Car car = new Car();
 
             using HttpClient client = new HttpClient();
 
             // serialize car object til json, som bruges som en string 
-            string CarObject = JsonConvert.SerializeObject(car);
+            string CarObject = JsonConvert.SerializeObject(item);
 
             // gøre oplysningerne klar til at blive sendt til api
             StringContent requestContent = new StringContent(CarObject, Encoding.UTF8, "application/json");

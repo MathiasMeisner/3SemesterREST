@@ -9,6 +9,6 @@ namespace UdpReceiver.Model
     public class Car
     {
         public int IsIn { get; set; }
-        public string Farve { get; set; }
+        public string ColorOfCar { get; set; }
     }
 }
