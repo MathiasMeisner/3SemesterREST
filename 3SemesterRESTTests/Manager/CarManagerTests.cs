@@ -26,7 +26,7 @@ namespace _3SemesterREST.Manager.Tests
         [TestMethod()]
         public void TestItAll()
         {
-            CarManager manager = new CarManager();
+            CarManager manager = new CarManager(_context);
             List<Car> allCars = manager.GetAll().ToList();
 
 
