@@ -12,7 +12,7 @@ namespace UdpReceiver
         static void Main(string[] args)
         {
             
-            UdpReciver receiver = new UdpReciver();
+            UDP receiver = new UDP();
 
             // starter metoden
             //receiver.ReciverData();
@@ -25,7 +25,7 @@ namespace UdpReceiver
             // starter metoden
             // giver udfyldens krav, så uri, object
             // den bruger generic til at vide hvad er den skal sender til api'en
-            Car p = SenderToApi.Post<Car, Car>("https://localhost:44350/api/cars", car).Result;
+            Car p = Consumer.Post<Car, Car>("https://localhost:44350/api/cars", car).Result;
 
             // beder programmet om at vis resultet fra metoden i console applikation
             Console.WriteLine("Added: " + p);

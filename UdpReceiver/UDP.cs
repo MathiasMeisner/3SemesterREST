@@ -9,7 +9,7 @@ using UdpReceiver.Model;
 
 namespace UdpReceiver
 {
-    public class UdpReciver
+    public class UDP
     {
         /// <summary>
         /// Denne metode modtager oplysninger fra vores raspberry pi

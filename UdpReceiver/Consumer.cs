@@ -9,7 +9,7 @@ using UdpReceiver.Model;
 
 namespace UdpReceiver
 {
-    public class SenderToApi
+    public class Consumer
     {
         /// <summary>
         /// metode laver en http post reqeust til api'en. 
