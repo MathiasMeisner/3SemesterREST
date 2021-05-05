@@ -48,16 +48,9 @@ namespace _3SemesterREST.Manager.Tests
             //Assert.AreEqual(newCar.ColorOfCar, carById.ColorOfCar);
             //Assert.AreEqual(newCar.IsIn, carById.IsIn);
 
-            //Assert.IsNull(manager.GetById(newCar.Id + 1));
+            //Assert.IsNull(manager.GetById(newCar.Id + 1);
 
         }
 
-    }
-}
-
-namespace _3SemesterRESTTests.Manager
-{
-    class CarManagerTests
-    {
     }
 }
