@@ -27,12 +27,12 @@ namespace _3SemesterREST.Manager.Tests
         public void TestItAll()
         {
             CarManager manager = new CarManager(_context);
-            List<Car> allCars = manager.GetAll().ToList();
+            List<Car> allCars = manager.GetAllCars().ToList();
 
 
             // Add
             Car data = new Car { ColorOfCar = "Red", IsIn = 1 };
-            Car newCar = manager.Add(data);
+            Car newCar = manager.AddCar(data);
             Assert.IsTrue(newCar.Id > 0);
             Assert.AreEqual(data.ColorOfCar, newCar.ColorOfCar);
             Assert.AreEqual(data.IsIn, newCar.IsIn);
@@ -41,27 +41,27 @@ namespace _3SemesterREST.Manager.Tests
             //Assert.ThrowsException<Exception>(() => manager.Add(nullModelData));
 
             // GetById
-            Car carById = manager.GetById(newCar.Id);
+            Car carById = manager.GetCarById(newCar.Id);
             Assert.AreEqual(newCar.Id, carById.Id);
             Assert.AreEqual(newCar.ColorOfCar, carById.ColorOfCar);
             Assert.AreEqual(newCar.IsIn, carById.IsIn);
 
-            Assert.IsNull(manager.GetById(newCar.Id + 1));
+            Assert.IsNull(manager.GetCarById(newCar.Id + 1));
 
             // Update
             Car updates = new Car { ColorOfCar = "Volvo", IsIn = 1 };
             int id = newCar.Id;
-            Car updatedCar = manager.Update(id, updates);
+            Car updatedCar = manager.UpdateCar(id, updates);
             Assert.AreEqual(id, updatedCar.Id);
             Assert.AreEqual(updates.IsIn, updatedCar.IsIn);
 
-            Assert.IsNull(manager.Update(id + 1, updates));
+            Assert.IsNull(manager.UpdateCar(id + 1, updates));
             //Assert.ThrowsException<CarException>(() => manager.Update(id, nullModelData));
 
             //Delete all
-            /*foreach(var d in manager.GetAll().ToList())
+            /*foreach(var d in manager.GetAllCars().ToList())
             {
-                manager.Delete(d.);
+                manager.DeleteCar(d.);
             }*/
 
         }

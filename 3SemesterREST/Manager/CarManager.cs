@@ -20,17 +20,17 @@ namespace _3SemesterREST.Manager
         {
         }
 
-        public IEnumerable<Car> GetAll()
+        public IEnumerable<Car> GetAllCars()
         {
             return _context.Cars;
         }
 
-        public Car GetById(int id)
+        public Car GetCarById(int id)
         {
             return _context.Cars.Find(id);
         }
 
-        public Car Add(Car newCar)
+        public Car AddCar(Car newCar)
         {
             try
             {
@@ -46,7 +46,7 @@ namespace _3SemesterREST.Manager
             }
         }
 
-        public Car Delete(int id)
+        public Car DeleteCar(int id)
         {
             Car car = _context.Cars.Find(id);
             if (car == null) return null;
@@ -55,7 +55,7 @@ namespace _3SemesterREST.Manager
             return car;
         }
 
-        public Car Update(int id, Car updates)
+        public Car UpdateCar(int id, Car updates)
         {
             try
             {

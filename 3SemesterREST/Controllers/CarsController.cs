@@ -24,14 +24,14 @@ namespace _3SemesterREST.Controllers
         [HttpGet]
         public IEnumerable<Car> Get()
         {
-            return _manager.GetAll();
+            return _manager.GetAllCars();
         }
 
         // GET api/<CarsController>/5
         [HttpGet("{id}")]
         public Car Get(int id)
         {
-            return _manager.GetById(id);
+            return _manager.GetCarById(id);
         }
 
         // POST api/<CarsController>
@@ -42,7 +42,7 @@ namespace _3SemesterREST.Controllers
         {
             try
             {
-                Car newCar = _manager.Add(value);
+                Car newCar = _manager.AddCar(value);
                 string uri = Url.RouteUrl(RouteData.Values) + "/" + newCar.Id;
                 return Created(uri, newCar);
             }
@@ -61,7 +61,7 @@ namespace _3SemesterREST.Controllers
         {
             try
             {
-                Car updatedCar = _manager.Update(id, value);
+                Car updatedCar = _manager.UpdateCar(id, value);
                 if (updatedCar == null) return NotFound("No such car, id: " + id);
                 return Ok(updatedCar);
 
@@ -78,7 +78,7 @@ namespace _3SemesterREST.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<Car> Delete(int id)
         {
-            Car deletedCar = _manager.Delete(id);
+            Car deletedCar = _manager.DeleteCar(id);
             if (deletedCar == null) return NotFound("No such car, id: " + id);
             return Ok(deletedCar);
         }
