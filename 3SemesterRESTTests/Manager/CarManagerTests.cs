@@ -61,7 +61,7 @@ namespace _3SemesterREST.Manager.Tests
             //Delete all
             /*foreach(var d in manager.GetAllCars().ToList())
             {
-                manager.DeleteCar(d.);
+                manager.DeleteCar(d.Id);
             }*/
 
         }

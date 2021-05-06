@@ -20,7 +20,6 @@ namespace UdpReceiver
             {
                 UDP.ReciverData();
             }
-            
 
             //Dette er en test for at se om consumer virker.
             //Car car = new Car() { ColorOfCar = "blue green", IsIn = 1 };
