@@ -10,6 +10,8 @@ using static Microsoft.AspNetCore.Http.StatusCodes;
 
 namespace _3SemesterREST.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class BookingsController : Controller
     {
         private readonly BookingManager _bookingManager;
