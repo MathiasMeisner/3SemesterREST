@@ -32,7 +32,7 @@ namespace UdpReceiver
 
                 // laver de modtaget oplysninger om byte array
                 Byte[] recivedBytes = udpServer.Receive(ref RemoteIPEndpoint);
-
+                Console.WriteLine("modtaget");
                 // laver oplysninng om fra byte til string
                 string recivedData = Encoding.ASCII.GetString(recivedBytes);
 
@@ -45,6 +45,9 @@ namespace UdpReceiver
                 // laver det om til tal fra string inden bliver lagt over i properties
                 car.IsIn = Int32.Parse(data[1]);
 
+                Console.WriteLine(car.ColorOfCar + " " + car.IsIn);
+
+                Car p = Consumer.Post<Car, Car>("https://localhost:44350/api/cars", car).Result;
             }
             catch (Exception e)
             {

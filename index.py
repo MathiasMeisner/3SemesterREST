@@ -1,11 +1,11 @@
-from sense_hat import SenseHat
+#from sense_hat import SenseHat
 from time import sleep
 import time
-from socket import socket 
-from datatime import datatime
+from socket import * 
+from datetime import datetime
 import random
 
-sense = SenseHat()
+#sense = SenseHat()
 
 colorlist = ["Pink","Crimson","Red", "Maroon","Brown","Misty Rose","Salmon","Coral", "Orange-Red","Chocolate","Orange","Gold","Ivory",
 "Yellow","Olive","Yellow-Green","Lawn green","Chartreuse","Lime","Green","Spring green","Aquamarine","Turquoise","Azure","Aqua/Cyan",
@@ -18,17 +18,17 @@ BROADCAST_TO_PORT = 9999
 s.setsockopt(SOL_SOCKET, SO_BROADCAST, 1)
 TotalCountCar = 1
 TotalParking = 0
-sense.clear(0,255,0)
+#sense.clear(0,255,0)
 while True:
     randomcolor = random.choice(colorlist)
     ISin = 1
-    messageToUDP = randomcolor + str(ISin)
+    messageToUDP = randomcolor + " " + str(ISin)
     s.sendto(bytes(messageToUDP,"UTF-8"), ('<broadcast>', BROADCAST_TO_PORT))
     
     TotalCountCar + 1
     TotalParking + 1
-    if TotalParking == 30:
-        sense.clear(255,0,0)
+    #if TotalParking == 30:
+        #sense.clear(255,0,0)
     if TotalCountCar > 30:
         break
     
