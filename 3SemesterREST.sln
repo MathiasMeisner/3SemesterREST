@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "3SemesterREST", "3SemesterR
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UdpReceiver", "UdpReceiver\UdpReceiver.csproj", "{130F78C2-AF93-48AD-B1E6-555168547234}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3SemesterRESTTests", "3SemesterRESTTests\3SemesterRESTTests.csproj", "{02E4E35C-25EC-4955-A534-B64EFBE01E39}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "3SemesterRESTTests", "3SemesterRESTTests\3SemesterRESTTests.csproj", "{02E4E35C-25EC-4955-A534-B64EFBE01E39}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

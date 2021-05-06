@@ -16,7 +16,11 @@ namespace UdpReceiver
             UDP UDP = new UDP();
             Console.WriteLine("welcome");
             // starter metoden
-            UDP.ReciverData();
+            while (true)
+            {
+                UDP.ReciverData();
+            }
+            
 
             //Dette er en test for at se om consumer virker.
             //Car car = new Car() { ColorOfCar = "blue green", IsIn = 1 };

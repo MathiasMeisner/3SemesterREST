@@ -11,13 +11,14 @@ namespace UdpReceiver
 {
     public class UDP
     {
+        UdpClient udpServer = new UdpClient(9999);
         /// <summary>
         /// Denne metode modtager oplysninger fra vores raspberry pi
         /// </summary>
         public void ReciverData()
         {
             // bestemmer hvilken port programmet skal modtager oplysninger 
-            UdpClient udpServer = new UdpClient(9999);
+            
 
             // laver ip adresse om til en string
             IPAddress ip = IPAddress.Parse("127.0.0.1");
