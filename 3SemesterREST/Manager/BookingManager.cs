@@ -52,7 +52,7 @@ namespace _3SemesterREST.Manager
             {
                 Booking booking = _context.Bookings.Find(id);
                 if (booking == null) return null;
-                booking.Name = updates.Name;
+                booking.Username = updates.Username;
                 booking.LicensePlate = updates.LicensePlate;
                 _context.Entry(booking).State = EntityState.Modified;
                 _context.SaveChanges();
@@ -60,7 +60,7 @@ namespace _3SemesterREST.Manager
             }
             catch (DbUpdateException ex)
             {
-                throw new BookingException(updates.Name + " " + updates.LicensePlate + " " + ex.InnerException.Message);
+                throw new BookingException(updates.Username + " " + updates.LicensePlate + " " + ex.InnerException.Message);
             }
         }
 
