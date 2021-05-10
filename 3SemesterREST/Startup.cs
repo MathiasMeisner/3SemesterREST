@@ -36,6 +36,41 @@ namespace _3SemesterREST
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "_3SemesterREST", Version = "v1" });
             });
+            services.AddCors(options =>
+
+            {
+
+                options.AddPolicy("allowAnythingFromZealand",
+
+                    builder =>
+
+                        builder.WithOrigins("http://zealand.dk")
+
+                            .AllowAnyHeader()
+
+                            .AllowAnyMethod());
+
+                options.AddPolicy("allowGetPut",
+
+                    builder =>
+
+                        builder.AllowAnyOrigin()
+
+                        .WithMethods("GET", "PUT", "POST", "DELETE")
+
+                        .AllowAnyHeader());
+
+                options.AddPolicy("allowAnything", // similar to * in Azure
+
+                    builder =>
+
+                        builder.AllowAnyOrigin()
+
+                            .AllowAnyMethod()
+
+                            .AllowAnyHeader());
+
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,6 +86,8 @@ namespace _3SemesterREST
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors("allowGetPut");
 
             app.UseAuthorization();
 

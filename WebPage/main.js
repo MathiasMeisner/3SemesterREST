@@ -1,11 +1,12 @@
-const baseUri = "http://jsonplaceholder.typicode.com/posts"
+const baseUri = "https://localhost:44350/api/bookings"
 
 Vue.createApp({
     data() {
         return {
-            posts: [],
+            bookings: [],
+            oneBooking: null,
             error: null,
-            userId: ""
+            id: ""
         }
 
     },
@@ -15,27 +16,31 @@ Vue.createApp({
     },
     methods: {
         resetList() {
-            this.posts = [],
+            this.bookings = [],
             this.error = null
+            this.oneBooking = null
         },
         async getByUserId(uid) {
             if (uid == null || uid =="") {
                 this.error = "No user id"
-                this.posts =[]
+                this.bookings =[]
             } else{
-                const uri = baseUri + "?userId=" + uid
-                console.log("getByUserId" + uri)
-                this.helperGetPosts(uri)
+                const uri = baseUri + "/" + uid
+                console.log(uri)
+                const response = await axios.get(uri)
+                this.oneBooking = response.data
             }
+            console.log(this.bookings)
         },
         async helperGetPosts(uri) {
             try {
                 const response = await axios.get(uri)
-                this.posts = await response.data
+                this.bookings = await response.data
                 this.error = null
             } catch (ex) {
-                this.posts = []
+                this.bookings = []
                 this.error = ex.message
+                console.log(ex)
             }
         }
     }
