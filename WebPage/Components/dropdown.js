@@ -16,4 +16,4 @@ Vue.component('v-dropdown', {
         this.active = !this.active
       }
     }
-})
+}).mount("#app")

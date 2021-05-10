@@ -1,6 +1,6 @@
 const baseUri = "http://jsonplaceholder.typicode.com/posts"
 
-const app = Vue.createApp({
+Vue.createApp({
     data() {
         return {
             posts: [],
@@ -14,13 +14,17 @@ const app = Vue.createApp({
         this.helperGetPosts(baseUri)
     },
     methods: {
-        async getByParkeringspladserId(uid) {
+        resetList() {
+            this.posts = [],
+            this.error = null
+        },
+        async getByUserId(uid) {
             if (uid == null || uid =="") {
                 this.error = "No user id"
                 this.posts =[]
             } else{
                 const uri = baseUri + "?userId=" + uid
-                console.log("getByParkeringspladserId" + uri)
+                console.log("getByUserId" + uri)
                 this.helperGetPosts(uri)
             }
         },
