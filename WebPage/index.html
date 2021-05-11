@@ -71,6 +71,14 @@
             </div>
         </div>
 
+        <div>
+            <input type="text" placeholder="username" v-model="Booking.username">
+            <input type="text" placeholder="licensePlate" v-model="Booking.licensePlate">
+            <input type="text" placeholder="bookTime" v-model="Booking.bookTime">
+            <button v-on:click="AddBooking()">Tilføj booking</button>
+            <div>{{oneBooking}}</div>
+        </div>
+
         <!--bunden/footer-->
         <div class="container-fluid">
             <div class="row">
