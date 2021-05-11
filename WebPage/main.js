@@ -9,6 +9,8 @@ Vue.createApp({
             id: "",
             Booking: { username: "", licensePlate: "", bookTime: "" },
             Addbooking: "",
+            LicensePlate: "",
+            SingleLicensePlate: null,
         }
 
     },
@@ -26,6 +28,7 @@ Vue.createApp({
             if (uid == null || uid == "") {
                 this.error = "No user id"
                 this.bookings = []
+                console.log(uid)
             } else {
                 const uri = baseUri + "/" + uid
                 console.log(uri)
@@ -35,6 +38,17 @@ Vue.createApp({
             }
             console.log(this.bookings)
         },
+
+        async getByLicensePlate(LicensePlate){
+            const url = baseUri + "/LicensePlate/" + LicensePlate
+            try{
+                response = await axios.get(url)
+                this.SingleLicensePlate = await response.data
+            } catch (ex) {
+                alert (ex.message)
+            }
+        },
+
         async helperGetPosts(uri) {
             try {
                 const response = await axios.get(uri)
@@ -46,13 +60,18 @@ Vue.createApp({
                 console.log(ex)
             }
         },
+
+        getAllBookings(){
+            this.helperGetPosts(baseUri)
+        },
+
         async AddBooking() {
             try {
                 response = await axios.post(baseUri, this.Booking)
                 this.Addbooking = "response" + response.status + " " + response.statusText
-                console.log(this.Addbooking)
+                console.log(this.Booking)
                 //console.log(Booking.id)
-                this.getByUserId(this.Booking.id)
+                this.getAllBookings()
             }
             catch (ex) {
                 console.log(ex.message)

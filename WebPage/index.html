@@ -50,6 +50,15 @@
             </div>
         </div>
 
+        <div>
+            <input v-model="LicensePlate" placeholder="Search for license plate">
+            <button v-on:click="getByLicensePlate(LicensePlate)">Get by license plate</button>
+    
+            <div v-if="SingleLicensePlate">
+                {{SingleLicensePlate.id}} {{SingleLicensePlate.username}} {{SingleLicensePlate.licensePlate}} {{SingleLicensePlate.bookTime}}
+            </div>
+        </div>
+
         <!--Table/List - TEST - RET SENERE TIL AT PASSE PARKERINGSPLADSER-->
         <div class="container-fluid">
             <div class="row">

@@ -38,6 +38,16 @@ namespace _3SemesterREST.Controllers
             return booking;
         }
 
+        // GET: api/<BookingsController>/5
+        [HttpGet("LicensePlate/{LicensePlate}")]
+        [ProducesResponseType(Status200OK)]
+        [ProducesResponseType(Status404NotFound)]
+        public ActionResult<Booking> GetByLicensePlate(string licenseplate)
+        {
+            Booking booking = _bookingManager.GetByLicensePlate(licenseplate);
+            return booking;
+        }
+
         // POST api/<BookingsController>
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
@@ -55,6 +65,7 @@ namespace _3SemesterREST.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
 
         // PUT api/<BookingsController>/5
         [HttpPut("{id}")]
