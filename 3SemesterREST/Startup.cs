@@ -32,6 +32,7 @@ namespace _3SemesterREST
             services.AddControllers();
             services.AddDbContext<CarContext>(opt => opt.UseSqlServer(Secrets.ConnectionString));
             services.AddDbContext<BookingContext>(opt => opt.UseSqlServer(Secrets.ConnectionString));
+            services.AddDbContext<ParkeringspladsContext>(opt => opt.UseSqlServer(Secrets.ConnectionString));
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "_3SemesterREST", Version = "v1" });
