@@ -11,6 +11,6 @@ namespace _3SemesterREST.Models
 
         public int IsBooked { get; set; }
 
-        public int IsIn { get; set; }  
+        public int IsOccupied { get; set; }  
     }
 }

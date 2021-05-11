@@ -54,14 +54,14 @@ namespace _3SemesterREST.Manager
                 if (parkeringsplads == null) return null;
                 parkeringsplads.Id = updates.Id;
                 parkeringsplads.IsBooked = updates.IsBooked;
-                parkeringsplads.IsIn = updates.IsIn;
+                parkeringsplads.IsOccupied = updates.IsOccupied;
                 _context.Entry(parkeringsplads).State = EntityState.Modified;
                 _context.SaveChanges();
                 return parkeringsplads;
             }
             catch (DbUpdateException ex)
             {
-                throw new BookingException(updates.Id + " " + updates.IsBooked + " " + updates.IsIn + " " + ex.InnerException.Message);
+                throw new BookingException(updates.Id + " " + updates.IsBooked + " " + updates.IsOccupied + " " + ex.InnerException.Message);
             }
         }
 
