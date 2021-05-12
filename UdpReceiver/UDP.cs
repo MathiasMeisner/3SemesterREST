@@ -46,7 +46,9 @@ namespace UdpReceiver
                 // laver det om til tal fra string inden bliver lagt over i properties
                 car.IsIn = Int32.Parse(data[1]);
 
-                Console.WriteLine(car.ColorOfCar + " " + car.IsIn);
+                car.TodayDate = DateTime.Parse(data[2]);
+
+                Console.WriteLine(car.ColorOfCar + " " + car.IsIn + " " + car.TodayDate);
 
                 Car p = Consumer.Post<Car, Car>("https://localhost:44350/api/cars", car).Result;
             }

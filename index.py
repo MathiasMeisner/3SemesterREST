@@ -2,7 +2,7 @@
 from time import sleep
 import time
 from socket import * 
-from datetime import datetime
+from datetime import date
 import random
 
 #sense = SenseHat()
@@ -23,7 +23,8 @@ isEmpty = True
 while isEmpty:
     randomcolor = random.choice(colorlist)
     ISin = 1
-    messageToUDP = randomcolor + " " + str(ISin)
+    today = date.today()
+    messageToUDP = randomcolor + " " + str(ISin) + " " + str(today)
     s.sendto(bytes(messageToUDP,"UTF-8"), ('<broadcast>', BROADCAST_TO_PORT))
     
     TotalCountCar += 1

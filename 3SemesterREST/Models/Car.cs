@@ -11,5 +11,6 @@ namespace _3SemesterREST.Models
         //public int NumberOfCars { get; set; }
         public string ColorOfCar { get; set; }
         public int IsIn { get; set; }
+        public DateTime TodayDate { get; set; }
     }
 }

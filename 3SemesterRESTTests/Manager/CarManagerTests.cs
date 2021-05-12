@@ -29,7 +29,7 @@ namespace _3SemesterREST.Manager.Tests
             CarManager manager = new CarManager(_context);
             List<Car> allCars = manager.GetAllCars().ToList();
 
-
+            /*
             // Add
             Car data = new Car { ColorOfCar = "Red", IsIn = 1 };
             Car newCar = manager.AddCar(data);
@@ -57,12 +57,12 @@ namespace _3SemesterREST.Manager.Tests
 
             Assert.IsNull(manager.UpdateCar(id + 1, updates));
             //Assert.ThrowsException<CarException>(() => manager.Update(id, nullModelData));
-
+           */
             //Delete all
-            /*foreach(var d in manager.GetAllCars().ToList())
+            foreach(var d in manager.GetAllCars().ToList())
             {
                 manager.DeleteCar(d.Id);
-            }*/
+            }
 
         }
 
