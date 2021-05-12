@@ -7,13 +7,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace _3SemesterREST.Manager
 {
-    public class ParkeringspladsContext : DbContext
+    public class ParkingBoothContext : DbContext
     {
-        public ParkeringspladsContext(DbContextOptions<ParkeringspladsContext> options) : base(options)
+        public ParkingBoothContext(DbContextOptions<ParkingBoothContext> options) : base(options)
         {
 
         }
 
-        public DbSet<Parkeringsplads> Parkeringspladser { get; set; }
+        public DbSet<ParkingBooth> ParkingBooths { get; set; }
     }
 }

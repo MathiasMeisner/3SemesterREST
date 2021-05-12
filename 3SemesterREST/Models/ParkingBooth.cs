@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace _3SemesterREST.Models
 {
-    public class Parkeringsplads
+    public class ParkingBooth
     {
         public int Id { get; set; }
 

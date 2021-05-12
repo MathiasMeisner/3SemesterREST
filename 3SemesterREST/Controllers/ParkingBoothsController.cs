@@ -12,43 +12,43 @@ namespace _3SemesterREST.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ParkeringspladserController : Controller
+    public class ParkingBoothsController : Controller
     {
-        private readonly ParkeringspladsManager _parkeringspladsManager;
-        public ParkeringspladserController(ParkeringspladsContext parkeringspladsContext)
+        private readonly ParkingBoothManager _parkingBoothManager;
+        public ParkingBoothsController(ParkingBoothContext parkingBoothContext)
         {
-            _parkeringspladsManager = new ParkeringspladsManager(parkeringspladsContext);
+            _parkingBoothManager = new ParkingBoothManager(parkingBoothContext);
         }
 
         // GET: api/<ParkeringspladserController>
         [HttpGet]
-        public IEnumerable<Parkeringsplads> Get()
+        public IEnumerable<ParkingBooth> Get()
         {
-            return _parkeringspladsManager.GetAllParkeringspladser();
+            return _parkingBoothManager.GetAllParkingBooths();
         }
 
         // GET: api/<ParkeringspladserController>/5
         [HttpGet("{id}")]
         [ProducesResponseType(Status200OK)]
         [ProducesResponseType(Status404NotFound)]
-        public ActionResult<Parkeringsplads> Get(int id)
+        public ActionResult<ParkingBooth> Get(int id)
         {
-            Parkeringsplads parkeringsplads = _parkeringspladsManager.GetParkeringspladsById(id);
-            if (parkeringsplads == null) return NotFound("No such id: " + id);
-            return parkeringsplads;
+            ParkingBooth parkingBooth = _parkingBoothManager.GetParkingBoothById(id);
+            if (parkingBooth == null) return NotFound("No such id: " + id);
+            return parkingBooth;
         }
 
         // POST api/<ParkeringspladserController>
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public ActionResult<Parkeringsplads> Post([FromBody] Parkeringsplads value)
+        public ActionResult<ParkingBooth> Post([FromBody] ParkingBooth value)
         {
             try
             {
-                Parkeringsplads newParkeringsplads = _parkeringspladsManager.AddParkeringsplads(value);
-                string uri = Url.RouteUrl(RouteData.Values) + "/" + newParkeringsplads.Id;
-                return Created(uri, newParkeringsplads);
+                ParkingBooth newParkingBooth = _parkingBoothManager.AddParkingBooth(value);
+                string uri = Url.RouteUrl(RouteData.Values) + "/" + newParkingBooth.Id;
+                return Created(uri, newParkingBooth);
             }
             catch (ArgumentException ex)
             {
@@ -61,13 +61,13 @@ namespace _3SemesterREST.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<Parkeringsplads> Put(int id, [FromBody] Parkeringsplads value)
+        public ActionResult<ParkingBooth> Put(int id, [FromBody] ParkingBooth value)
         {
             try
             {
-                Parkeringsplads updatedParkeringsplads = _parkeringspladsManager.UpdateParkeringsplads(id, value);
-                if (updatedParkeringsplads == null) return NotFound("No such parkeringsplads, Id: " + id);
-                return Ok(updatedParkeringsplads);
+                ParkingBooth updatedParkingBooth = _parkingBoothManager.UpdateParkingBooth(id, value);
+                if (updatedParkingBooth == null) return NotFound("No such parking booth, Id: " + id);
+                return Ok(updatedParkingBooth);
 
             }
             catch (ArgumentException ex)
@@ -80,11 +80,11 @@ namespace _3SemesterREST.Controllers
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<Parkeringsplads> Delete(int id)
+        public ActionResult<ParkingBooth> Delete(int id)
         {
-            Parkeringsplads deletedParkeringsplads = _parkeringspladsManager.DeleteParkeringsplads(id);
-            if (deletedParkeringsplads == null) return NotFound("No such parkeringsplads, Id: " + id);
-            return Ok(deletedParkeringsplads);
+            ParkingBooth deletedParkingBooth = _parkingBoothManager.DeleteParkingBooth(id);
+            if (deletedParkingBooth == null) return NotFound("No such parking booth, Id: " + id);
+            return Ok(deletedParkingBooth);
         }
     }
 }
