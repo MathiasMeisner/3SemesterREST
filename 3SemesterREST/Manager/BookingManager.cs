@@ -133,11 +133,15 @@ namespace _3SemesterREST.Manager
 
             int Id = reader.GetInt32(0);
 
-            string Username = GuardedGet<string>(reader, 1);
+            int ParkingId = reader.GetInt32(1);
 
-            string LicensePlate = GuardedGet<string>(reader, 2);
+            string Username = GuardedGet<string>(reader, 2);
 
-            DateTime BookTime = GuardedGet<DateTime>(reader, 3);
+            string LicensePlate = GuardedGet<string>(reader, 3);
+
+            DateTime StartTime = GuardedGet<DateTime>(reader, 4);
+
+            DateTime EndTime = GuardedGet<DateTime>(reader, 5);
 
 
 
@@ -147,11 +151,15 @@ namespace _3SemesterREST.Manager
 
                 Id = Id,
 
+                ParkingId = ParkingId,
+
                 Username = Username,
 
                 LicensePlate = LicensePlate,
 
-                BookTime = BookTime
+                StartTime = StartTime,
+
+                EndTime = EndTime
 
             };
 

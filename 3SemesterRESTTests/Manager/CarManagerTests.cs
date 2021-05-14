@@ -29,14 +29,14 @@ namespace _3SemesterREST.Manager.Tests
             CarManager manager = new CarManager(_context);
             List<Car> allCars = manager.GetAllCars().ToList();
 
-            /*
+            
             // Add
-            Car data = new Car { ColorOfCar = "Red", IsIn = 1 };
+            Car data = new Car { Color = "Red", LicensePlate = "TestPlate" };
             Car newCar = manager.AddCar(data);
             Assert.IsTrue(newCar.Id > 0);
-            Assert.AreEqual(data.ColorOfCar, newCar.ColorOfCar);
-            Assert.AreEqual(data.IsIn, newCar.IsIn);
-
+            Assert.AreEqual(data.Color, newCar.Color);
+            Assert.AreEqual(data.LicensePlate, newCar.LicensePlate);
+            /*
             Car nullModelData = new Car { ColorOfCar = "Dette er fra test"};
             //Assert.ThrowsException<Exception>(() => manager.Add(nullModelData));
 
@@ -57,12 +57,12 @@ namespace _3SemesterREST.Manager.Tests
 
             Assert.IsNull(manager.UpdateCar(id + 1, updates));
             //Assert.ThrowsException<CarException>(() => manager.Update(id, nullModelData));
-           */
+           
             //Delete all
             foreach(var d in manager.GetAllCars().ToList())
             {
                 manager.DeleteCar(d.Id);
-            }
+            }*/
 
         }
 

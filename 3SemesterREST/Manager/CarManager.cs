@@ -61,14 +61,15 @@ namespace _3SemesterREST.Manager
             {
                 Car car = _context.Cars.Find(id);
                 if (car == null) return null;
-                car.IsIn = updates.IsIn;
+                car.Color = updates.Color;
+                car.LicensePlate = updates.LicensePlate;
                 _context.Entry(car).State = EntityState.Modified;
                 _context.SaveChanges();
                 return car;
             }
             catch (DbUpdateException ex)
             {
-                throw new CarException(updates.IsIn + " " + ex.InnerException.Message);
+                throw new CarException(updates.Color + " " + updates.LicensePlate + " " + ex.InnerException.Message);
             }
         }
     }
