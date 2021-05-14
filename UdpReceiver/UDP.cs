@@ -30,6 +30,7 @@ namespace UdpReceiver
             try
             {
                 Car car = new Car();
+                Parkinglots parkinglots = new Parkinglots();
 
                 // laver de modtaget oplysninger om byte array
                 Byte[] recivedBytes = udpServer.Receive(ref RemoteIPEndpoint);
@@ -41,16 +42,20 @@ namespace UdpReceiver
                 string[] data = recivedData.Split(" ");
 
                 // ligger oplysninger hen modellens properties 
-                car.ColorOfCar = data[0];
+                car.Color = data[0];
+
+                car.LicensePlate = data[3];
 
                 // laver det om til tal fra string inden bliver lagt over i properties
-                car.IsIn = Int32.Parse(data[1]);
+                parkinglots.isin = Int32.Parse(data[1]);
 
-                car.TodayDate = DateTime.Parse(data[2]);
+                parkinglots.day = DateTime.Parse(data[2]);
 
-                Console.WriteLine(car.ColorOfCar + " " + car.IsIn + " " + car.TodayDate);
+                Console.WriteLine(car.Color + " " + parkinglots.isin + " " + parkinglots.day, " " + car.LicensePlate);
 
-                Car p = Consumer.Post<Car, Car>("https://localhost:44350/api/cars", car).Result;
+                Car c = Consumer.PostToCar<Car, Car>("https://localhost:44350/api/cars", car).Result;
+                //Parkinglots p = Consumer.PostToparkinglot<Parkinglots, Parkinglots>("", parkinglots).Result;
+
             }
             catch (Exception e)
             {

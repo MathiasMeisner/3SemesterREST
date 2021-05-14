@@ -4,7 +4,7 @@ import time
 from socket import * 
 from datetime import date
 import random
-
+import string
 #sense = SenseHat()
 
 colorlist = ["Pink","Crimson","Red", "Maroon","Brown","Misty-Rose","Salmon","Coral", "Orange-Red","Chocolate","Orange","Gold","Ivory",
@@ -12,6 +12,9 @@ colorlist = ["Pink","Crimson","Red", "Maroon","Brown","Misty-Rose","Salmon","Cor
 "Teal","Lavender","Blue","Navy","Blue-Violet","Indigo","Dark-Violet","Plum","Magenta","Purple","Red-Violet", 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 
 "Tan","Beige","Slate-gray","Dark-Slate-Gray","White", "White-Smoke","Light-Gray","Silver","Dark-Gray","Gray","Dim-Gray","Black"]
 # denne list er hentet fra https://simple.wikipedia.org/wiki/List_of_colors
+
+letters = string.ascii_uppercase
+number = string.digits
 
 s = socket(AF_INET, SOCK_DGRAM)
 BROADCAST_TO_PORT = 9999
@@ -22,9 +25,16 @@ TotalParking = 0
 isEmpty = True
 while isEmpty:
     randomcolor = random.choice(colorlist)
+    
+    letters_str = ''.join(random.choice(letters) for i in range(2))
+
+    number_str = ''.join(random.choice(number) for i in range(5))
+
+    LicensePlate = letters_str + number_str
+
     ISin = 1
     today = date.today()
-    messageToUDP = randomcolor + " " + str(ISin) + " " + str(today)
+    messageToUDP = randomcolor + " " + str(ISin) + " " + str(today) + " " + LicensePlate 
     s.sendto(bytes(messageToUDP,"UTF-8"), ('<broadcast>', BROADCAST_TO_PORT))
     
     TotalCountCar += 1
