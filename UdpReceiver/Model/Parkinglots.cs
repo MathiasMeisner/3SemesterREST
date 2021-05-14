@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace UdpReceiver.Model
 {
-    public class Car
+    public class Parkinglots
     {
-        public string Color { get; set; }
-        public string LicensePlate { get; set; }
+        public int isin { get; set; }
+        public DateTime day { get; set; }
     }
 }
