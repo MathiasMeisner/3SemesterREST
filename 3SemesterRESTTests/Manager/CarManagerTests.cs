@@ -52,8 +52,8 @@ namespace _3SemesterREST.Manager.Tests
             Assert.AreEqual(data.Color, newCar.Color);
             Assert.AreEqual(data.LicensePlate, newCar.LicensePlate);
             
-            Car nullModelData = new Car();
-            Assert.ThrowsException<CarException>(() => manager.AddCar(nullModelData));
+            //Car nullModelData = new Car();
+            //Assert.ThrowsException<CarException>(() => manager.AddCar(nullModelData));
             
             // GetById
             Car carById = manager.GetCarById(newCar.Id);
