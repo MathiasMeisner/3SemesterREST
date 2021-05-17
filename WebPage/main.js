@@ -16,6 +16,7 @@ Vue.createApp({
             id: "",
             LicensePlate: "",
             SingleLicensePlate: null,
+
         }
 
     },
@@ -104,11 +105,41 @@ Vue.createApp({
                 console.log(this.Booking)
                 //console.log(Booking.id)
                 this.getAllBookings()
+                this.notifyMe()
             }
             catch (ex) {
                 console.log(ex.message)
                 alert(ex.message)
             }
         },
+        notifyMe() {
+            NotificationMessage = "Du valgt parkingsplads nummer " + this.Booking.parkingId + 
+            " Du har valgt start tid til: " + this.Booking.startTime + 
+            " Din parkingplads udløber klokken: " + this.Booking.endTime
+            console.log(NotificationMessage)
+            // Let's check if the browser supports notifications
+            if (!("Notification" in window)) {
+              alert("This browser does not support desktop notification");
+            }
+          
+            // Let's check whether notification permissions have already been granted
+            else if (Notification.permission === "granted") {
+              // If it's okay let's create a notification
+              var notification = new Notification(NotificationMessage);
+            }
+          
+            // Otherwise, we need to ask the user for permission
+            else if (Notification.permission !== "denied") {
+              Notification.requestPermission().then(function (permission) {
+                // If the user accepts, let's create a notification
+                if (permission === "granted") {
+                  var notification = new Notification(NotificationMessage);
+                }
+              });
+            }
+          
+            // At last, if the user has denied notifications, and you
+            // want to be respectful there is no need to bother them any more.
+          }
     }
 }).mount("#app")
