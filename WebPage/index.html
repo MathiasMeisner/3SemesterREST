@@ -29,10 +29,13 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-3"></div>
-                <div class="col-md-3">
+                <div class="col-md-6">
+                    <input v-model="LicensePlate" placeholder="Search for license plate">
+                    <button v-on:click="getByLicensePlate(LicensePlate)">Get by license plate</button>
+                    <div v-if="SingleLicensePlate">
+                        {{SingleLicensePlate.id}} {{SingleLicensePlate.username}} {{SingleLicensePlate.licensePlate}} {{SingleLicensePlate.bookTime}}
+                    </div>
                     <!--<v-dropdown :lokationer="lokationer"></v-dropdown>-->
-                </div>
-                <div class="col-md-3">
                     <input v-model.number="id" placeholder="id" type="number">
                     <button v-on:click="getByUserId(id)">Get By UserId</button>
                 </div>
@@ -49,22 +52,6 @@
                 </div>
             </div>
         </div>
-
-        <!--by licensePlate-->
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-3"></div>
-                <div class="col-md-6">
-                    <input v-model="LicensePlate" placeholder="Search for license plate">
-                    <button v-on:click="getByLicensePlate(LicensePlate)">Get by license plate</button>
-                    <div v-if="SingleLicensePlate">
-                        {{SingleLicensePlate.id}} {{SingleLicensePlate.username}} {{SingleLicensePlate.licensePlate}} {{SingleLicensePlate.bookTime}}
-                    </div>
-                </div>
-                <div class="col-md-3"></div>
-            </div>
-        </div>
-
 
         <!--Table/List over bookinger -->
         <div class="container-fluid">
