@@ -50,16 +50,21 @@
             </div>
         </div>
 
-        <div>
-            <input v-model="LicensePlate" placeholder="Search for license plate">
-            <button v-on:click="getByLicensePlate(LicensePlate)">Get by license plate</button>
-    
-            <div v-if="SingleLicensePlate">
-                {{SingleLicensePlate.id}} {{SingleLicensePlate.username}} {{SingleLicensePlate.licensePlate}} {{SingleLicensePlate.bookTime}}
+        <!--by licensePlate-->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <input v-model="LicensePlate" placeholder="Search for license plate">
+                    <button v-on:click="getByLicensePlate(LicensePlate)">Get by license plate</button>
+                    <div v-if="SingleLicensePlate">
+                        {{SingleLicensePlate.id}} {{SingleLicensePlate.username}} {{SingleLicensePlate.licensePlate}} {{SingleLicensePlate.bookTime}}
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!--Table/List - TEST - RET SENERE TIL AT PASSE PARKERINGSPLADSER-->
+
+        <!--Table/List over bookinger -->
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-3"></div>
@@ -67,9 +72,30 @@
                     <table v-if="bookings.length" class="table table-striped table-inverse table-responsive">
                         <tr v-for="booking in bookings" :key="booking.id">
                             <td>{{booking.id}}</td>
-                            <td>{{booking.username}}</td>
+                            <td>{{booking.parkingId}}</td>
                             <td>{{booking.licensePlate}}</td>
-                            <td>{{booking.bookTime}}</td>
+                            <td>{{booking.startTime}}</td>
+                            <td>{{booking.endTime}}</td>
+                            <td>{{booking.username}}</td>
+                        </tr>
+                    </table>
+                    <div v-else style="font-style: italic;">Posts doesn't exist</div>
+                </div>
+                <div class="col-md-3">
+                    <div v-if="oneBooking">{{ oneBooking }}</div>
+                </div>
+            </div>
+        </div>
+        <!--Table/List component over nye bookinger/ParkingBoothList-->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <table v-if="parkingBooths.length" class="table table-striped table-inverse table-responsive">
+                        <tr v-for="parkingBooth in parkingBooths" :key="parkingBooth.id">
+                            <td>{{parkingBooth.id}}</td>
+                            <td>{{parkingBooth.isBooked}}</td>
+                            <td>{{parkingBooth.isOccupied}}</td>
                         </tr>
                     </table>
                     <div v-else style="font-style: italic;">Posts doesn't exist</div>
@@ -80,10 +106,13 @@
             </div>
         </div>
 
+        <!--add booking test-->
         <div>
             <input type="text" placeholder="username" v-model="Booking.username">
+            <input type="text" placeholder="parkingId" v-model="Booking.parkingId">
             <input type="text" placeholder="licensePlate" v-model="Booking.licensePlate">
-            <input type="text" placeholder="bookTime" v-model="Booking.bookTime">
+            <input type="text" placeholder="startTime" v-model="Booking.startTime">
+            <input type="text" placeholder="EndTime" v-model="Booking.endTime">
             <button v-on:click="AddBooking()">Tilføj booking</button>
             <div>{{oneBooking}}</div>
         </div>
@@ -103,6 +132,7 @@
 
     <!-- Import Components
 <script src="./components/dropdown.js"></script> -->
+<script src="./components/ParkingBoothList.js"></script> -->
 
     <!-- Mount App
 <script>const mountedApp = app.mount('#app')</script>  -->
