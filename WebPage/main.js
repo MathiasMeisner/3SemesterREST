@@ -7,10 +7,10 @@ Vue.createApp({
         return {
             parkingBooths: [],
             parkingBooth: null,
-            parkingBooth: { isBooked: "", isOccupied: "", parkinglotId: "" },
+            parkingBooth: { isBooked: "", isOccupied: "" },
             bookings: [],
             Booking: null,
-            Booking: { username: "", licensePlate: "", startTime: "", endTime: "" },
+            Booking: { username: "", parkingId: "", licensePlate: "", startTime: "", endTime: "" },
             Addbooking: "",
             error: null,
             id: "",
@@ -21,9 +21,10 @@ Vue.createApp({
     },
     async created() {
         console.log("created method called")
-        this.helperGetBookingsPosts(bookingUri)
-        this.helperGetBookingsPosts(parkingBoothUri)
+        await this.helperGetBookingsPosts(bookingUri)
+        await this.helperGetParkingBoothsPosts(parkingBoothUri)
     },
+
     methods: {
         resetList() {
             this.bookings = [],

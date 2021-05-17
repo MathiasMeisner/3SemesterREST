@@ -72,34 +72,26 @@
                 <div class="col-md-3"></div>
                 <div class="col-md-6">
                     <table v-if="bookings.length" class="table table-striped table-inverse table-responsive">
-                        <tr v-for="booking in bookings" :key="booking.id">
-                            <td>{{booking.id}}</td>
-                            <td>{{booking.parkingId}}</td>
-                            <td>{{booking.licensePlate}}</td>
-                            <td>{{booking.startTime}}</td>
-                            <td>{{booking.endTime}}</td>
-                            <td>{{booking.username}}</td>
-                        </tr>
-                    </table>
-                    <div v-else style="font-style: italic;">Posts doesn't exist</div>
-                </div>
-                <div class="col-md-3">
-                    <div v-if="oneBooking">{{ oneBooking }}</div>
-                </div>
-            </div>
-        </div>
-        <!--Table/List component over nye bookinger/ParkingBoothList-->
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-3"></div>
-                <div class="col-md-6">
-                    <table v-if="parkingBooths.length" class="table table-striped table-inverse table-responsive">
-                        <tr v-for="parkingBooth in parkingBooths" :key="parkingBooth.id">
-                            <td>{{parkingBooth.id}}</td>
-                            <td>{{parkingBooth.isBooked}}</td>
-                            <td>{{parkingBooth.isOccupied}}</td>
-                            <td>{{parkingBooth.parkinglotId}}</td>
-                        </tr>
+                        <thead class="thead-inverse">
+                            <tr>
+                                <th>Booking Id</th>
+                                <th>Parking Id</th>
+                                <th>License Plate</th>
+                                <th>Parking Start Time</th>
+                                <th>Parking End Time</th>
+                                <th>Username</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="booking in bookings" :key="booking.id">
+                                    <td>{{booking.id}}</td>
+                                    <td>{{booking.parkingId}}</td>
+                                    <td>{{booking.licensePlate}}</td>
+                                    <td>{{booking.startTime}}</td>
+                                    <td>{{booking.endTime}}</td>
+                                    <td>{{booking.username}}</td>
+                                </tr>
+                            </tbody>
                     </table>
                     <div v-else style="font-style: italic;">Posts doesn't exist</div>
                 </div>
@@ -107,6 +99,32 @@
             </div>
         </div>
 
+        <!--Table/List component over nye bookinger/ParkingBoothList-->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <table v-if="parkingBooths.length" class="table table-striped table-inverse table-responsive">
+                        <thead class="thead-inverse">
+                            <tr>
+                                <th>Parking Booth Id</th>
+                                <th>Is booked(1/0)</th>
+                                <th>is occupied (1/0)</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="parkingBooth in parkingBooths" :key="parkingBooth.id">
+                                    <td>{{parkingBooth.id}}</td>
+                                    <td>{{parkingBooth.isBooked}}</td>
+                                    <td>{{parkingBooth.isOccupied}}</td>
+                                </tr>
+                            </tbody>
+                    </table>
+                    <div v-else style="font-style: italic;">Posts doesn't exist</div>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+        </div>
         <!--add booking test-->
         <div class="container-fluid">
             <div class="row">
@@ -139,7 +157,6 @@
 
     <!-- Import Components
 <script src="./components/dropdown.js"></script> -->
-<script src="./components/ParkingBoothList.js"></script> -->
 
     <!-- Mount App
 <script>const mountedApp = app.mount('#app')</script>  -->
