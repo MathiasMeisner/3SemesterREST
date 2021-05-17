@@ -107,7 +107,6 @@ namespace _3SemesterREST.Manager
                 Booking booking = _context.Bookings.Find(id);
                 if (booking == null) return null;
                 booking.Username = updates.Username;
-                booking.LicensePlate = updates.LicensePlate;
                 _context.Entry(booking).State = EntityState.Modified;
                 _context.SaveChanges();
                 return booking;

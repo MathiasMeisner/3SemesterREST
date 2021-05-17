@@ -29,7 +29,7 @@ namespace _3SemesterREST.Manager.Tests
             List<Booking> allBookings = bookingManager.GetAllBookings().ToList();
 
 
-            //LicensePlate skal være det samme som en LicensePlate i Cars
+            //LicensePlate skal være det samme som en LicensePlate i Cars, dette er add
             Booking data = new Booking {ParkingId = 1, Username = "John Enevoldsen", LicensePlate = "XR55143", StartTime = new DateTime(2021, 5, 15, 8, 10, 5), EndTime = new DateTime(2021, 5, 15, 14, 50, 4) };
             Booking newBooking = bookingManager.AddBooking(data);
             Assert.IsTrue(newBooking.Id > 0);
@@ -42,6 +42,7 @@ namespace _3SemesterREST.Manager.Tests
             //Booking nullModelData = new Booking();
             //Assert.ThrowsException<BookingException>(() => bookingManager.AddBooking(nullModelData));
 
+            //GetById
             Booking bookingById = bookingManager.GetBookingById(newBooking.Id);
             Assert.AreEqual(newBooking.Id, bookingById.Id);
             Assert.AreEqual(newBooking.ParkingId, bookingById.ParkingId);
@@ -51,6 +52,22 @@ namespace _3SemesterREST.Manager.Tests
             Assert.AreEqual(newBooking.EndTime, bookingById.EndTime);
 
             Assert.IsNull(bookingManager.GetBookingById(newBooking.Id + 1));
+
+            //Update
+            Booking updates = new Booking { Username = "Test Johnsen" };
+            int id = newBooking.Id;
+            Booking updatedBooking = bookingManager.UpdateBooking(id, updates);
+            Assert.AreEqual(id, updatedBooking.Id);
+            Assert.AreEqual(updates.Username, updatedBooking.Username);
+
+            Assert.IsNull(bookingManager.UpdateBooking(id + 1, updates));
+
+            //Delete all
+            /*
+            foreach (var b in bookingManager.GetAllBookings().ToList())
+            {
+                bookingManager.DeleteBooking(b.Id);
+            }*/
         }
     }
 }
