@@ -13,6 +13,7 @@ Vue.createApp({
             Booking: { username: "", parkingId: "", licensePlate: "", startTime: "", endTime: "" },
             Addbooking: "",
             error: null,
+            newBookingError: null,
             id: "",
             LicensePlate: "",
             SingleLicensePlate: null,
@@ -30,11 +31,6 @@ Vue.createApp({
     },
 
     methods: {
-        resetList() {
-            this.bookings = [],
-                this.error = null
-            this.Booking = null
-        },
         async getByUserId(uid) {
             if (uid == null || uid == "") {
                 this.error = "No user id"
@@ -115,6 +111,16 @@ Vue.createApp({
 
         getAllBookings(){
             this.helperGetBookingsPosts(bookingUri)
+        },
+
+        tryAddBooking(){
+            if (this.Booking.endTime - this.Booking.startTime < 12) {
+               this.AddBooking() 
+            }
+            else{
+                this.newBookingError = "du kunne ikke tilføje denne booking"
+                console.log("du kunne ikke tilføje denne booking")
+            }
         },
 
         async AddBooking() {

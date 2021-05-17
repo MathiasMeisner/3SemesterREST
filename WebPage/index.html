@@ -38,11 +38,9 @@
                     </div>
                     <!--<v-dropdown :lokationer="lokationer"></v-dropdown>-->
                     <input v-model.number="id" placeholder="id" type="number">
-                    <button v-on:click="getByUserId(id)">Get By UserId</button>
+                    <button v-on:click="getByUserId(id)">Get By User Id</button>
                 </div>
-                <div class="col-md-3">
-                    <button v-on:click="resetList">Clean the list</button>
-                </div>
+                <div class="col-md-3"></div>
             </div>
         </div>
         <!--error message-->
@@ -113,6 +111,17 @@
                 <div class="col-md-3"></div>
             </div>
         </div>
+        <!--new booking error message-->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <div v-if="newBookingError" style="color :darkred">{{newBookingError}}</div>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+        </div>
+
         <!--add booking test-->
         <div class="container-fluid">
             <div class="row">
@@ -123,18 +132,26 @@
                     <input type="text" placeholder="licensePlate" v-model="Booking.licensePlate">
                     <input type="text" placeholder="startTime" v-model="Booking.startTime">
                     <input type="text" placeholder="EndTime" v-model="Booking.endTime">
-                    <button v-on:click="AddBooking()">Tilføj booking</button>
+                    <button v-on:click="tryAddBooking()">Tilføj booking</button>
                     <div>{{oneBooking}}</div>
                 </div>
                 <div class="col-md-3"></div>
             </div>
         </div>
-        <div class="text-center" id="LotsCounter">
-            <h4>
-                Et eller andet
-            </h4>
-            Antal ledige båse: {{emptyLots}}
+        <br>
+        
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <div class="text-center" id="LotsCounter">
+                    <h4>Antal ledige båse: {{emptyLots}}</h4>
+                    </div>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
         </div>
+        
 
 
         <!--bunden/footer-->
