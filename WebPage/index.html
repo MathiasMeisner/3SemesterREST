@@ -33,7 +33,8 @@
                     <input v-model="LicensePlate" placeholder="Search for license plate">
                     <button v-on:click="getByLicensePlate(LicensePlate)">Get by license plate</button>
                     <div v-if="SingleLicensePlate">
-                        {{SingleLicensePlate.id}} {{SingleLicensePlate.username}} {{SingleLicensePlate.licensePlate}} {{SingleLicensePlate.bookTime}}
+                        {{SingleLicensePlate.id}} {{SingleLicensePlate.username}} {{SingleLicensePlate.licensePlate}}
+                        {{SingleLicensePlate.bookTime}}
                     </div>
                     <!--<v-dropdown :lokationer="lokationer"></v-dropdown>-->
                     <input v-model.number="id" placeholder="id" type="number">
@@ -68,17 +69,17 @@
                                 <th>Parking End Time</th>
                                 <th>Username</th>
                             </tr>
-                            </thead>
-                            <tbody>
-                                <tr v-for="booking in bookings" :key="booking.id">
-                                    <td>{{booking.id}}</td>
-                                    <td>{{booking.parkingId}}</td>
-                                    <td>{{booking.licensePlate}}</td>
-                                    <td>{{booking.startTime}}</td>
-                                    <td>{{booking.endTime}}</td>
-                                    <td>{{booking.username}}</td>
-                                </tr>
-                            </tbody>
+                        </thead>
+                        <tbody>
+                            <tr v-for="booking in bookings" :key="booking.id">
+                                <td>{{booking.id}}</td>
+                                <td>{{booking.parkingId}}</td>
+                                <td>{{booking.licensePlate}}</td>
+                                <td>{{booking.startTime}}</td>
+                                <td>{{booking.endTime}}</td>
+                                <td>{{booking.username}}</td>
+                            </tr>
+                        </tbody>
                     </table>
                     <div v-else style="font-style: italic;">Posts doesn't exist</div>
                 </div>
@@ -98,14 +99,14 @@
                                 <th>Is booked(1/0)</th>
                                 <th>is occupied (1/0)</th>
                             </tr>
-                            </thead>
-                            <tbody>
-                                <tr v-for="parkingBooth in parkingBooths" :key="parkingBooth.id">
-                                    <td>{{parkingBooth.id}}</td>
-                                    <td>{{parkingBooth.isBooked}}</td>
-                                    <td>{{parkingBooth.isOccupied}}</td>
-                                </tr>
-                            </tbody>
+                        </thead>
+                        <tbody>
+                            <tr v-for="parkingBooth in parkingBooths" :key="parkingBooth.id">
+                                <td>{{parkingBooth.id}}</td>
+                                <td>{{parkingBooth.isBooked}}</td>
+                                <td>{{parkingBooth.isOccupied}}</td>
+                            </tr>
+                        </tbody>
                     </table>
                     <div v-else style="font-style: italic;">Posts doesn't exist</div>
                 </div>
@@ -128,6 +129,13 @@
                 <div class="col-md-3"></div>
             </div>
         </div>
+        <div class="text-center" id="LotsCounter">
+            <h4>
+                Et eller andet
+            </h4>
+            Antal ledige båse: {{emptyLots}}
+        </div>
+
 
         <!--bunden/footer-->
         <div class="container-fluid">

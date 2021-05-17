@@ -1,6 +1,6 @@
 const bookingUri = "https://localhost:44350/api/bookings"
 const parkingBoothUri = "https://localhost:44350/api/parkingbooths"
-
+const parkingLotUri = "https://localhost:44350/api/parkinglots"
 
 Vue.createApp({
     data() {
@@ -16,6 +16,8 @@ Vue.createApp({
             id: "",
             LicensePlate: "",
             SingleLicensePlate: null,
+            parkingLots: [],
+            emptyLots: 0
 
         }
 
@@ -24,6 +26,7 @@ Vue.createApp({
         console.log("created method called")
         await this.helperGetBookingsPosts(bookingUri)
         await this.helperGetParkingBoothsPosts(parkingBoothUri)
+        await this.helperGetParkingLotsPosts(parkingLotUri)
     },
 
     methods: {
@@ -90,6 +93,22 @@ Vue.createApp({
             } catch (ex) {
                 this.parkingBooths = []
                 this.error = ex.message
+                console.log(ex)
+            }
+        },
+        async helperGetParkingLotsPosts(uri){
+            try{
+                const response = await axios.get(uri)
+                this.parkingLots = await response.data
+                amountOfLots = 0
+                for(i = 0; i < this.parkingLots.length; i++){
+                    if(this.parkingLots[i].isin == 1){
+                        amountOfLots +=1
+                    }
+                }
+                this.emptyLots = 30 - amountOfLots
+
+            } catch(ex){
                 console.log(ex)
             }
         },
