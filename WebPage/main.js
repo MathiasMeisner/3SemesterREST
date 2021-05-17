@@ -10,7 +10,7 @@ Vue.createApp({
             parkingBooth: { isBooked: "", isOccupied: "", parkinglotId: "" },
             bookings: [],
             Booking: null,
-            Booking: { username: "", licensePlate: "", bookTime: "" },
+            Booking: { username: "", licensePlate: "", startTime: "", endTime: "" },
             Addbooking: "",
             error: null,
             id: "",
@@ -21,8 +21,8 @@ Vue.createApp({
     },
     async created() {
         console.log("created method called")
-        this.helperGetPosts(bookingUri)
-        this.helperGetPosts(parkingBoothUri)
+        this.helperGetBookingsPosts(bookingUri)
+        this.helperGetBookingsPosts(parkingBoothUri)
     },
     methods: {
         resetList() {
@@ -40,13 +40,13 @@ Vue.createApp({
                 console.log(uri)
                 const response = await axios.get(uri)
                 this.Booking = response.data
-                this.helperGetPosts(uri)
+                this.helperGetBookingsPosts(uri)
             }
             console.log(this.bookings)
         },
         async getByParkingBoothId(uid) {
             if (uid == null || uid == "") {
-                this.error = "No user id"
+                this.error = "No parkingBooth id"
                 this.parkingBooths = []
                 console.log(uid)
             } else {
@@ -54,7 +54,7 @@ Vue.createApp({
                 console.log(uri)
                 const response = await axios.get(uri)
                 this.parkingBooth = response.data
-                this.helperGetPosts(uri)
+                this.helperGetBookingsPosts(uri)
             }
             console.log(this.parkingBooths)
         },
@@ -69,14 +69,23 @@ Vue.createApp({
             }
         },
 
-        async helperGetPosts(uri) {
+        async helperGetBookingsPosts(uri) {
             try {
                 const response = await axios.get(uri)
                 this.bookings = await response.data
-                this.parkingBooths = await response.data
                 this.error = null
             } catch (ex) {
                 this.bookings = []
+                this.error = ex.message
+                console.log(ex)
+            }
+        },
+        async helperGetParkingBoothsPosts(uri) {
+            try {
+                const response = await axios.get(uri)
+                this.parkingBooths = await response.data
+                this.error = null
+            } catch (ex) {
                 this.parkingBooths = []
                 this.error = ex.message
                 console.log(ex)
@@ -84,7 +93,7 @@ Vue.createApp({
         },
 
         getAllBookings(){
-            this.helperGetPosts(bookingUri)
+            this.helperGetBookingsPosts(bookingUri)
         },
 
         async AddBooking() {

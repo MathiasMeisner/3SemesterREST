@@ -53,13 +53,15 @@
         <!--by licensePlate-->
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
                     <input v-model="LicensePlate" placeholder="Search for license plate">
                     <button v-on:click="getByLicensePlate(LicensePlate)">Get by license plate</button>
                     <div v-if="SingleLicensePlate">
                         {{SingleLicensePlate.id}} {{SingleLicensePlate.username}} {{SingleLicensePlate.licensePlate}} {{SingleLicensePlate.bookTime}}
                     </div>
                 </div>
+                <div class="col-md-3"></div>
             </div>
         </div>
 
@@ -96,25 +98,30 @@
                             <td>{{parkingBooth.id}}</td>
                             <td>{{parkingBooth.isBooked}}</td>
                             <td>{{parkingBooth.isOccupied}}</td>
+                            <td>{{parkingBooth.parkinglotId}}</td>
                         </tr>
                     </table>
                     <div v-else style="font-style: italic;">Posts doesn't exist</div>
                 </div>
-                <div class="col-md-3">
-                    <div v-if="oneBooking">{{ oneBooking }}</div>
-                </div>
+                <div class="col-md-3"></div>
             </div>
         </div>
 
         <!--add booking test-->
-        <div>
-            <input type="text" placeholder="username" v-model="Booking.username">
-            <input type="text" placeholder="parkingId" v-model="Booking.parkingId">
-            <input type="text" placeholder="licensePlate" v-model="Booking.licensePlate">
-            <input type="text" placeholder="startTime" v-model="Booking.startTime">
-            <input type="text" placeholder="EndTime" v-model="Booking.endTime">
-            <button v-on:click="AddBooking()">Tilføj booking</button>
-            <div>{{oneBooking}}</div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <input type="text" placeholder="username" v-model="Booking.username">
+                    <input type="text" placeholder="parkingId" v-model="Booking.parkingId">
+                    <input type="text" placeholder="licensePlate" v-model="Booking.licensePlate">
+                    <input type="text" placeholder="startTime" v-model="Booking.startTime">
+                    <input type="text" placeholder="EndTime" v-model="Booking.endTime">
+                    <button v-on:click="AddBooking()">Tilføj booking</button>
+                    <div>{{oneBooking}}</div>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
         </div>
 
         <!--bunden/footer-->
