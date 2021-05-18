@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Product Owner Side</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js"></script>
     <script src="https://unpkg.com/vue@next"></script>
@@ -79,7 +79,7 @@
                 <option value="Tan">Tan</option>
                 <option value="Beige">Beige</option>
                 <option value="Slate-gray">Slate Gray</option>
-                <option value="Plum">Dark Slate Gray</option>
+                <option value="Dark-Slate-Gray">Dark Slate Gray</option>
                 <option value="White">White</option>
                 <option value="White-Smoke">White Smoke</option>
                 <option value="Light-Gray">Light Gray</option>
@@ -89,6 +89,9 @@
                 <option value="Dim-Gray">Dim Gray</option>
                 <option value="Black">Black</option>
             </select>
+            <button class="btn btn-primary" v-on:click="GetCarColor()" id="ColorButton">Get car by
+                color</button>
+                <div class="font-weight-bold" id="OutputColor">{{SingleColor}}</div>
         </div>
     </div>
     <script src="ProductOwner.js"></script>
