@@ -36,7 +36,7 @@ namespace _3SemesterREST.Manager.Tests
         [TestMethod()]
         public void GetCarsByDayTest()
         {
-            int count = 14;
+            int count = 0;
             Assert.AreEqual(count,controller.Getbyday(2021,05,14));
         }
 

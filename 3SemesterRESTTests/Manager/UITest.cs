@@ -31,7 +31,7 @@ namespace _3SemesterRESTTests.Manager
         public void TestOfproductownerpage()
         {
             driver.Navigate().GoToUrl("file:///C:/Users/herso/OneDrive/Skrivebord/3.%20semester/3SemesterREST/WebPage/ProductOwner.html");
-            Assert.AreEqual("Document", driver.Title);
+            Assert.AreEqual("Product Owner Side", driver.Title);
 
             IWebElement Day = driver.FindElement(By.Id("inputfield1"));
             Day.SendKeys("14");
@@ -62,6 +62,23 @@ namespace _3SemesterRESTTests.Manager
             string Text = Output.Text;
 
             Assert.AreNotEqual("Et eller andet Antal ledige båse: 0", Text);
+        }
+
+
+        [TestMethod]
+        public void TestOfGetCarColor()
+        {
+            driver.Navigate().GoToUrl("file:///C:/Users/herso/OneDrive/Skrivebord/3.%20semester/3SemesterREST/WebPage/ProductOwner.html");
+            IWebElement Day = driver.FindElement(By.Id("cars"));
+            Day.SendKeys("Red");
+
+            IWebElement Button = driver.FindElement(By.Id("ColorButton"));
+            Button.Click();
+
+            IWebElement Output = driver.FindElement(By.Id("OutputColor"));
+            string Text = Output.Text;
+
+            Assert.AreEqual("",Text);
         }
     }
 }
