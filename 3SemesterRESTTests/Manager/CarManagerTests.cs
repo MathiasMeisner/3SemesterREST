@@ -72,6 +72,11 @@ namespace _3SemesterREST.Manager.Tests
 
             Assert.IsNull(manager.UpdateCar(id + 1, updates));
             //Assert.ThrowsException<CarException>(() => manager.UpdateCar(id, nullModelData));
+
+            //Color test
+            Assert.AreEqual(0, manager.ColorOfCars("FarveSomIkkeFindes"));
+            Assert.AreEqual(3, manager.ColorOfCars("Dark-Slate-Gray"));
+
             /*
             //Delete all
             foreach(var d in manager.GetAllCars().ToList())
