@@ -14,6 +14,7 @@ Vue.createApp({
             Addbooking: "",
             error: null,
             newBookingError: null,
+            newBookingSuccess: null,
             id: "",
             LicensePlate: "",
             SingleLicensePlate: null,
@@ -115,11 +116,12 @@ Vue.createApp({
 
         tryAddBooking(){
             if (this.Booking.endTime - this.Booking.startTime < 12) {
-               this.AddBooking() 
+               this.AddBooking()
+               this.newBookingSuccess = "Booking oprettet!" 
             }
-            else{
-                this.newBookingError = "du kunne ikke tilføje denne booking"
-                console.log("du kunne ikke tilføje denne booking")
+            else {
+                this.newBookingError = "Du må ikke booke i længere end 12 timer"
+                console.log("Du må ikke booke i længere end 12 timer")
             }
         },
 
