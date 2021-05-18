@@ -28,7 +28,6 @@ Vue.createApp({
         },
         async GetCarColor() {
             Color = document.getElementById("cars").value
-            console.log(Color)
             const newuri = uriCarcolor + "/" + Color
             try {
                 const response = await axios.get(newuri)
