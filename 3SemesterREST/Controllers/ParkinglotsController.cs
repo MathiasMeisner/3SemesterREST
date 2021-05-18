@@ -20,7 +20,7 @@ namespace _3SemesterREST.Controllers
 
         // GET: api/<ProductOwnerController>
         [HttpGet]
-
+        [ProducesResponseType(StatusCodes.Status200OK)]
         public IEnumerable<Parkinglots> Get()
         {
             return manager.GetAll();
@@ -28,8 +28,8 @@ namespace _3SemesterREST.Controllers
 
         // GET api/<ProductOwnerController>/5
         [HttpGet("{year}/{months}/{day}")]
-        [ProducesResponseType(Status200OK)]
-        [ProducesResponseType(Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public int Getbyday(int year, int months, int day)
         {
             return manager.GetCarsByDay(year,months,day);

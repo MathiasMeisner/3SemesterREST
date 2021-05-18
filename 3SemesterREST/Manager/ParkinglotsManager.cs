@@ -86,19 +86,6 @@ namespace _3SemesterREST.Manager
             }
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
             private int Readdata(SqlDataReader reader)
         {
             int numberofcars = reader.GetInt32(0);

@@ -22,6 +22,7 @@ namespace _3SemesterREST.Controllers
 
         // GET: api/<BookingsController>
         [HttpGet]
+        [ProducesResponseType(Status200OK)]
         public IEnumerable<Booking> Get()
         {
             return _bookingManager.GetAllBookings();

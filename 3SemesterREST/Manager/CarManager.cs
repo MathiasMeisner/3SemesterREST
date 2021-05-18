@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using _3SemesterREST.Models;
@@ -70,6 +71,34 @@ namespace _3SemesterREST.Manager
             {
                 throw new CarException(updates.Color + " " + ex.InnerException.Message);
             }
+        }
+
+        public int ColorOfCars(string Color)
+        {
+            string SelectString = $"SELECT COUNT(id) FROM cars where Color='{Color}'";
+
+            using (SqlConnection conn = new SqlConnection(Secrets.ConnectionString))
+            {
+                conn.Open();
+
+                using (SqlCommand command = new SqlCommand(SelectString, conn))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            reader.Read();
+                            return Readdata(reader);
+                        }
+                        return 0;
+                    }
+                }
+            }
+        }
+        private int Readdata(SqlDataReader reader)
+        {
+            int numberofcars = reader.GetInt32(0);
+            return numberofcars;
         }
     }
 }

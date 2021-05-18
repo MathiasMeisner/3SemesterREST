@@ -22,6 +22,7 @@ namespace _3SemesterREST.Controllers
         }
         // GET: api/<CarsController>
         [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         public IEnumerable<Car> Get()
         {
             return _manager.GetAllCars();
@@ -29,9 +30,19 @@ namespace _3SemesterREST.Controllers
 
         // GET api/<CarsController>/5
         [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public Car Get(int id)
         {
             return _manager.GetCarById(id);
+        }
+
+        [HttpGet("CarColor/{Color}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public int GetCarColor(string Color)
+        {
+            return _manager.ColorOfCars(Color); 
         }
 
         // POST api/<CarsController>

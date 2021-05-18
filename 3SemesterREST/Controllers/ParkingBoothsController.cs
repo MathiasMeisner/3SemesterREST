@@ -22,6 +22,7 @@ namespace _3SemesterREST.Controllers
 
         // GET: api/<ParkeringspladserController>
         [HttpGet]
+        [ProducesResponseType(Status200OK)]
         public IEnumerable<ParkingBooth> Get()
         {
             return _parkingBoothManager.GetAllParkingBooths();
