@@ -115,7 +115,10 @@ Vue.createApp({
         },
 
         tryAddBooking(){
-            if (this.Booking.endTime - this.Booking.startTime < 12) {
+            var StartDatetime = this.Booking.startTime
+            var EndDateTime = this.Booking.endTime
+            forskel = new Date(EndDateTime).getTime() - new Date(StartDatetime).getTime()
+            if (forskel < 43200000) {
                this.AddBooking()
                this.newBookingSuccess = "Booking oprettet!" 
             }
