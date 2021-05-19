@@ -61,13 +61,13 @@ Vue.createApp({
             console.log(this.parkingBooths)
         },
 
-        async getByLicensePlate(LicensePlate){
+        async getByLicensePlate(LicensePlate) {
             const url = bookingUri + "/LicensePlate/" + LicensePlate
-            try{
+            try {
                 response = await axios.get(url)
                 this.SingleLicensePlate = await response.data
             } catch (ex) {
-                alert (ex.message)
+                alert(ex.message)
             }
         },
 
@@ -93,34 +93,34 @@ Vue.createApp({
                 console.log(ex)
             }
         },
-        async helperGetParkingLotsPosts(uri){
-            try{
+        async helperGetParkingLotsPosts(uri) {
+            try {
                 const response = await axios.get(uri)
                 this.parkingLots = await response.data
                 amountOfLots = 0
-                for(i = 0; i < this.parkingLots.length; i++){
-                    if(this.parkingLots[i].isin == 1){
-                        amountOfLots +=1
+                for (i = 0; i < this.parkingLots.length; i++) {
+                    if (this.parkingLots[i].isin == 1) {
+                        amountOfLots += 1
                     }
                 }
                 this.emptyLots = 30 - amountOfLots
 
-            } catch(ex){
+            } catch (ex) {
                 console.log(ex)
             }
         },
 
-        getAllBookings(){
+        getAllBookings() {
             this.helperGetBookingsPosts(bookingUri)
         },
 
-        tryAddBooking(){
+        tryAddBooking() {
             var StartDatetime = this.Booking.startTime
             var EndDateTime = this.Booking.endTime
             forskel = new Date(EndDateTime).getTime() - new Date(StartDatetime).getTime()
             if (forskel < 43200000) {
-               this.AddBooking()
-               this.newBookingSuccess = "Booking oprettet!" 
+                this.AddBooking()
+                this.newBookingSuccess = "Booking oprettet!"
             }
             else {
                 this.newBookingError = "Du må ikke booke i længere end 12 timer"
@@ -136,6 +136,7 @@ Vue.createApp({
                 //console.log(Booking.id)
                 this.getAllBookings()
                 this.notifyMe()
+                this.notify()
             }
             catch (ex) {
                 console.log(ex.message)
@@ -143,33 +144,64 @@ Vue.createApp({
             }
         },
         notifyMe() {
-            NotificationMessage = "Du valgt parkingsplads nummer " + this.Booking.parkingId + 
-            " Du har valgt start tid til: " + this.Booking.startTime + 
-            " Din parkingplads udløber klokken: " + this.Booking.endTime
+            NotificationMessage = "Du valgt parkingsplads nummer " + this.Booking.parkingId +
+                " Du har valgt start tid til: " + this.Booking.startTime +
+                " Din parkingplads udløber klokken: " + this.Booking.endTime
             console.log(NotificationMessage)
             // Let's check if the browser supports notifications
             if (!("Notification" in window)) {
-              alert("This browser does not support desktop notification");
+                alert("This browser does not support desktop notification");
             }
-          
+
             // Let's check whether notification permissions have already been granted
             else if (Notification.permission === "granted") {
-              // If it's okay let's create a notification
-              var notification = new Notification(NotificationMessage);
+                // If it's okay let's create a notification
+                var notification = new Notification(NotificationMessage);
             }
-          
+
             // Otherwise, we need to ask the user for permission
             else if (Notification.permission !== "denied") {
-              Notification.requestPermission().then(function (permission) {
-                // If the user accepts, let's create a notification
-                if (permission === "granted") {
-                  var notification = new Notification(NotificationMessage);
-                }
-              });
+                Notification.requestPermission().then(function (permission) {
+                    // If the user accepts, let's create a notification
+                    if (permission === "granted") {
+                        var notification = new Notification(NotificationMessage);
+                    }
+                });
             }
-          
+
             // At last, if the user has denied notifications, and you
             // want to be respectful there is no need to bother them any more.
-          }
+        },
+
+        notify() {
+            const moonLanding = new Date(this.Booking.endTime)
+            console.log(moonLanding)
+            time = moonLanding - 1800000
+            while (time != new Date().getTime()) {
+               
+            }
+            NotificationMessage = "Du valgt parkingsplads nummer " + this.Booking.parkingId +
+            " Du har valgt start tid til: " + this.Booking.startTime +
+            " Din parkingplads udløber klokken: " + this.Booking.endTime
+
+        if (!("Notification" in window)) {
+            alert("This browser does not support desktop notification");
+        }
+
+        // Let's check whether notification permissions have already been granted
+        else if (Notification.permission === "granted") {
+            // If it's okay let's create a notification
+            var notification = new Notification(NotificationMessage);
+        }
+
+        else if (Notification.permission !== "denied") {
+            Notification.requestPermission().then(function (permission) {
+                // If the user accepts, let's create a notification
+                if (permission === "granted") {
+                    var notification = new Notification(NotificationMessage);
+                }
+            });
+        }
+        }
     }
 }).mount("#app")
