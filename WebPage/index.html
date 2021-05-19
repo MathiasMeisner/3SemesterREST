@@ -117,17 +117,25 @@
             <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-6">
-                    <div v-if="newBookingError" class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <div v-if="newBookingError" class="alert alert-warning alert-dismissible fade show" role="alert">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             <span class="sr-only">Close</span>
                         </button>
                         <strong>Fejl!</strong> {{newBookingError}}
+                        <script>
+                            $(".alert").alert();
+                          </script>
                     </div>
-                    <div v-if="newBookingSuccess" class="alert alert-success" role="alert">
-                      <h4 class="alert-heading"></h4>
-                      <p>{{newBookingSuccess}}</p>
-                      <p class="mb-0"></p>
+                    <div v-if="newBookingSuccess" class="alert alert-success alert-dismissible fade show" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            <span class="sr-only">Close</span>
+                        </button>
+                        <strong>{{newBookingSuccess}}</strong>
+                        <script>
+                            $(".alert").alert();
+                          </script>
                     </div>
                 </div>
                 <div class="col-md-3"></div>
