@@ -181,9 +181,8 @@ Vue.createApp({
             while (time != new Date().getTime()) {
                
             }
-            NotificationMessage = "Du valgt parkingsplads nummer " + this.Booking.parkingId +
-            " Du har valgt start tid til: " + this.Booking.startTime +
-            " Din parkingplads udløber klokken: " + this.Booking.endTime
+            NotificationMessage = "din parkingsplads nummer er: " + this.Booking.parkingId +
+            " den udløber klokken: " + this.Booking.endTime
 
         if (!("Notification" in window)) {
             alert("This browser does not support desktop notification");
