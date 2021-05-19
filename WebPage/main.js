@@ -19,7 +19,8 @@ Vue.createApp({
             LicensePlate: "",
             SingleLicensePlate: null,
             parkingLots: [],
-            emptyLots: 0
+            emptyLots: 0,
+            WarningTime: 0
 
         }
 
@@ -175,8 +176,8 @@ Vue.createApp({
 
         notify() {
             const moonLanding = new Date(this.Booking.endTime)
-            console.log(moonLanding)
-            time = moonLanding - 1800000
+            this.WarningTime *= 60000
+            time = moonLanding - this.WarningTime
             while (time != new Date().getTime()) {
                
             }
