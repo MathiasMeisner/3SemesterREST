@@ -19,7 +19,8 @@ Vue.createApp({
             LicensePlate: "",
             SingleLicensePlate: null,
             parkingLots: [],
-            emptyLots: 0
+            emptyLots: 0,
+            WarningTime: 0
 
         }
 
@@ -175,14 +176,13 @@ Vue.createApp({
 
         notify() {
             const moonLanding = new Date(this.Booking.endTime)
-            console.log(moonLanding)
-            time = moonLanding - 1800000
+            this.WarningTime *= 60000
+            time = moonLanding - this.WarningTime
             while (time != new Date().getTime()) {
                
             }
-            NotificationMessage = "Du valgt parkingsplads nummer " + this.Booking.parkingId +
-            " Du har valgt start tid til: " + this.Booking.startTime +
-            " Din parkingplads udløber klokken: " + this.Booking.endTime
+            NotificationMessage = "din parkingsplads nummer er: " + this.Booking.parkingId +
+            " den udløber klokken: " + this.Booking.endTime
 
         if (!("Notification" in window)) {
             alert("This browser does not support desktop notification");
