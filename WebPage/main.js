@@ -20,7 +20,8 @@ Vue.createApp({
             SingleLicensePlate: null,
             parkingLots: [],
             emptyLots: 0,
-            WarningTime: 0
+            WarningTime: 0,
+            reservationCode: "",
 
         }
 
@@ -115,11 +116,24 @@ Vue.createApp({
             this.helperGetBookingsPosts(bookingUri)
         },
 
+        makeReservationCode(length) {
+            var result           = [];
+            var characters       = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234567890123456789";
+            var charactersLength = characters.length;
+            for ( var i = 0; i < length; i++ ) {
+              result.push(characters.charAt(Math.floor(Math.random() * charactersLength)));
+            }
+            this.reservationCode = result.join("");
+        
+        },
+
         tryAddBooking() {
             var StartDatetime = this.Booking.startTime
             var EndDateTime = this.Booking.endTime
             forskel = new Date(EndDateTime).getTime() - new Date(StartDatetime).getTime()
             if (forskel < 43200000) {
+                this.makeReservationCode(6)
+                console.log(this.reservationCode);
                 this.AddBooking()
                 this.newBookingSuccess = "Booking oprettet!"
             }

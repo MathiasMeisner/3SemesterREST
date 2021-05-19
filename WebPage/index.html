@@ -123,19 +123,13 @@
                             <span class="sr-only">Close</span>
                         </button>
                         <strong>Fejl!</strong> {{newBookingError}}
-                        <script>
-                            $(".alert").alert();
-                          </script>
                     </div>
                     <div v-if="newBookingSuccess" class="alert alert-success alert-dismissible fade show" role="alert">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             <span class="sr-only">Close</span>
                         </button>
-                        <strong>{{newBookingSuccess}}</strong>
-                        <script>
-                            $(".alert").alert();
-                          </script>
+                        <strong>{{newBookingSuccess}} </strong> Din reservationsskode er : {{reservationCode}}
                     </div>
                 </div>
                 <div class="col-md-3"></div>
@@ -153,7 +147,7 @@
                     <input type="text" placeholder="startTime" v-model="Booking.startTime">
                     <input type="text" placeholder="EndTime" v-model="Booking.endTime">
                     <input type="number" placeholder="WarningTime" v-model="WarningTime">
-                    <button v-on:click="tryAddBooking">Tilføj booking</button>
+                    <button v-on:click="tryAddBooking">Tilføj booking</button>  
                 </div>
                 <div class="col-md-3"></div>
             </div>
