@@ -30,15 +30,6 @@ namespace _3SemesterREST.Manager.Tests
         {
             var getall = controller.Get();
             Assert.AreNotEqual(controller.Get(), getall);
-            int sum = 0;
-            int antal = 0;
-            foreach (var p in getall)
-            {
-                sum += p.ParkingTime;
-                antal++;
-            }
-            double gennemsnit = sum / antal;
-            Assert.AreEqual(0, gennemsnit);
         }
 
         [TestMethod()]

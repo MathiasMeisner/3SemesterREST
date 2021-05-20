@@ -8,7 +8,9 @@ Vue.createApp({
             day: 0,
             month: 0,
             year: 0,
-            SingleColor: null
+            SingleColor: null,
+            gennemsnit: 0,
+            ParkingLots: []
 
         }
     },
@@ -39,6 +41,20 @@ Vue.createApp({
             catch (ex) {
                 alert(ex.message)
             }
+        },
+        async AverageCarTime(){
+            const response = await axios.get(baseuri)
+            this.ParkingLots = response.data
+            sum = 0;
+            antal = 0;
+            this.ParkingLots.forEach ((item) =>
+            {
+                sum += item.parkingTime
+                antal++;
+            }
+            )
+            this.gennemsnit = sum/antal
+            this.gennemsnit = +this.gennemsnit.toFixed(2);
         }
 
     }
