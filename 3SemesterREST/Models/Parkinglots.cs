@@ -10,5 +10,6 @@ namespace _3SemesterREST.Models
         public int id { get; set; }
         public int isin { get; set; }
         public DateTime day { get; set; }
+        public int ParkingTime { get; set; }
     }
 }

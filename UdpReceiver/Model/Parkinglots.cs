@@ -10,5 +10,6 @@ namespace UdpReceiver.Model
     {
         public int isin { get; set; }
         public DateTime day { get; set; }
+        public int ParkingTime { get; set; }
     }
 }

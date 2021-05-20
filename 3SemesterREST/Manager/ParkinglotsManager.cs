@@ -63,7 +63,7 @@ namespace _3SemesterREST.Manager
         {
             try
             {
-                string insertString = "insert into Parkinglots (isin, day) values (@isin, @day);";
+                string insertString = "insert into Parkinglots (isin, day, ParkingTime) values (@isin, @day, @ParkingTime);";
 
                 using (SqlConnection conn = new SqlConnection(Secrets.ConnectionString))
                 {
@@ -72,6 +72,7 @@ namespace _3SemesterREST.Manager
                     {
                         GuardedAssign(command, "@isin", parkinglots.isin);
                         GuardedAssign(command, "@day", parkinglots.day);
+                        GuardedAssign(command, "@ParkingTime", parkinglots.ParkingTime);
 
                         int rowsAffected = command.ExecuteNonQuery();
 
@@ -96,13 +97,15 @@ namespace _3SemesterREST.Manager
         {
             int id = reader.GetInt32(0);
             int isin = reader.GetInt32(1);
+            int parkingTime = reader.GetInt32(3);
             DateTime day = GuardedGet<DateTime>(reader, 2);
 
             Parkinglots parkinglots = new Parkinglots
             {
                 id = id,
                 isin = isin,
-                day = day
+                day = day,
+                ParkingTime = parkingTime
             };
 
             return parkinglots;
