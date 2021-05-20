@@ -21,8 +21,7 @@ Vue.createApp({
             parkingLots: [],
             emptyLots: 0,
             WarningTime: 0,
-            reservationCode: "",
-
+            reservationCode: ""
         }
 
     },
@@ -117,14 +116,14 @@ Vue.createApp({
         },
 
         makeReservationCode(length) {
-            var result           = [];
-            var characters       = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234567890123456789";
+            var result = [];
+            var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234567890123456789";
             var charactersLength = characters.length;
-            for ( var i = 0; i < length; i++ ) {
-              result.push(characters.charAt(Math.floor(Math.random() * charactersLength)));
+            for (var i = 0; i < length; i++) {
+                result.push(characters.charAt(Math.floor(Math.random() * charactersLength)));
             }
             this.reservationCode = result.join("");
-        
+
         },
 
         tryAddBooking() {
@@ -151,7 +150,10 @@ Vue.createApp({
                 //console.log(Booking.id)
                 this.getAllBookings()
                 this.notifyMe()
-                this.notify()
+                WarningTimeinmils = this.WarningTime * 60000
+                this.sleep(WarningTimeinmils).then(() => {
+                    this.notify()
+                });
             }
             catch (ex) {
                 console.log(ex.message)
@@ -189,33 +191,31 @@ Vue.createApp({
         },
 
         notify() {
-            const moonLanding = new Date(this.Booking.endTime)
-            this.WarningTime *= 60000
-            time = moonLanding - this.WarningTime
-            while (time != new Date().getTime()) {
-               
-            }
+
             NotificationMessage = "din parkingsplads nummer er: " + this.Booking.parkingId +
-            " den udløber klokken: " + this.Booking.endTime
+                " den udløber klokken: " + this.Booking.endTime
 
-        if (!("Notification" in window)) {
-            alert("This browser does not support desktop notification");
-        }
+            if (!("Notification" in window)) {
+                alert("This browser does not support desktop notification");
+            }
 
-        // Let's check whether notification permissions have already been granted
-        else if (Notification.permission === "granted") {
-            // If it's okay let's create a notification
-            var notification = new Notification(NotificationMessage);
-        }
+            // Let's check whether notification permissions have already been granted
+            else if (Notification.permission === "granted") {
+                // If it's okay let's create a notification
+                var notification = new Notification(NotificationMessage);
+            }
 
-        else if (Notification.permission !== "denied") {
-            Notification.requestPermission().then(function (permission) {
-                // If the user accepts, let's create a notification
-                if (permission === "granted") {
-                    var notification = new Notification(NotificationMessage);
-                }
-            });
-        }
-        }
+            else if (Notification.permission !== "denied") {
+                Notification.requestPermission().then(function (permission) {
+                    // If the user accepts, let's create a notification
+                    if (permission === "granted") {
+                        var notification = new Notification(NotificationMessage);
+                    }
+                });
+            }
+        },
+        sleep (time) {
+            return new Promise((resolve) => setTimeout(resolve, time));
+          }
     }
 }).mount("#app")
