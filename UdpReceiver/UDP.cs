@@ -51,7 +51,9 @@ namespace UdpReceiver
 
                 parkinglots.day = DateTime.Parse(data[2]);
 
-                Console.WriteLine(car.Color + " " + parkinglots.isin + " " + parkinglots.day, " " + car.LicensePlate);
+                parkinglots.ParkingTime = Int32.Parse(data[4]);
+
+                Console.WriteLine(car.Color + " " + parkinglots.isin + " " + parkinglots.day + " " + car.LicensePlate + " " + parkinglots.ParkingTime);
 
                 Car c = Consumer.PostToCar<Car, Car>("https://localhost:44350/api/cars", car).Result;
                 Parkinglots p = Consumer.PostToparkinglot<Parkinglots, Parkinglots>("https://localhost:44350/api/parkinglots", parkinglots).Result;

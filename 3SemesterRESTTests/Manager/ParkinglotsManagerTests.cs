@@ -30,7 +30,6 @@ namespace _3SemesterREST.Manager.Tests
         {
             var getall = controller.Get();
             Assert.AreNotEqual(controller.Get(), getall);
-            
         }
 
         [TestMethod()]

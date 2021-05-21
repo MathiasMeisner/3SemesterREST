@@ -32,9 +32,11 @@ while isEmpty:
 
     LicensePlate = letters_str + number_str
 
+    ParkingTime = random.randint(60, 720)
+
     ISin = 1
     today = date.today()
-    messageToUDP = randomcolor + " " + str(ISin) + " " + str(today) + " " + LicensePlate 
+    messageToUDP = randomcolor + " " + str(ISin) + " " + str(today) + " " + LicensePlate + " " + str(ParkingTime)
     s.sendto(bytes(messageToUDP,"UTF-8"), ('<broadcast>', BROADCAST_TO_PORT))
     
     TotalCountCar += 1
@@ -45,4 +47,4 @@ while isEmpty:
         isEmpty = False
     
     print(messageToUDP)   
-    sleep(2)   
+    sleep(2)
