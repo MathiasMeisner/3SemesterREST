@@ -46,14 +46,12 @@ Vue.createApp({
             const response = await axios.get(baseuri)
             this.ParkingLots = response.data
             sum = 0;
-            antal = 0;
             this.ParkingLots.forEach ((item) =>
             {
                 sum += item.parkingTime
-                antal++;
             }
             )
-            this.gennemsnit = sum/antal
+            this.gennemsnit = sum/this.ParkingLots.length
             this.gennemsnit = +this.gennemsnit.toFixed(2);
         }
 
