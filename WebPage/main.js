@@ -35,7 +35,7 @@ Vue.createApp({
     methods: {
         async getByUserId(uid) {
             if (uid == null || uid == "") {
-                this.error = "No user id"
+                this.error = "No username"
                 this.bookings = []
                 console.log(uid)
             } else {
