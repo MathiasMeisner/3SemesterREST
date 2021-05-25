@@ -88,7 +88,7 @@ namespace _3SemesterREST
 
             app.UseRouting();
 
-            app.UseCors("allowGetPut");
+            app.UseCors("allowAnything");
 
             app.UseAuthorization();
 
