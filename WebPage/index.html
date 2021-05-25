@@ -20,19 +20,12 @@
         <!--Header/Title-->
         <div class="container-fluid">
             <div class="row bg-dark shadow-lg">
-                <div class="col-2 float sm-none float-md-left">
+                <div class="col-12">
                     <img alt="Icon SafeSpace" src="./Images/IconSafeSpace.png" 
-                    style="height: 4rem; width: 9.666rem" class="img-fluid mt-3">
-                </div>
-                <div class="col-8">
-                    <h1 class="text-center text-light display-4  p-2">Parkeringspladser</h1>
-                </div>
-                <div class="col-2">
-                    <div class="float-right mt-4" id="LotsCounter">
-                    <button type="button" class="btn btn-info">
+                    style="height: 4rem; width: 9.666rem" class="img float-left my-2">
+                    <button type="button" class="btn btn-info float-right mt-4">
                         Antal ledige båse: <span class="badge badge-light">{{emptyLots}}</span>
                     </button>
-                    </div>
                 </div>
             </div>
         </div>
@@ -40,51 +33,48 @@
         <!--Background image + new booking test-->
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-12 text-center" 
+                <div class="col-md-12 text-center position-relativ" 
                 style="background-image: url('./Images/Design\ uden\ navn\(7\).png'); height: 100vh; background-size:cover;">
-                <h1 class="text-light">this is a header</h1>
+                <h1 class="text-light position-absolute display-4 py-4" style="top: 39%; left: 50%; transform: translate(-50%, -50%)">Brug for en parkeringsbås?</h1>
+                <button class="btn btn-info text-light font-weight-bold position-absolute px-5" style="top: 55%; left: 50%; transform: translate(-50%, -50%)" type="button">Book plads nu!</button>
             </div>
             </div>
         </div>
         <!--Input forms-->
         <div class="container-fluid">
-            <div class="row mt-3">
-                <div class="col-md-2"></div>
-                <div class="col-md-4">
-                    <input v-model="LicensePlate" placeholder="Search for license plate" class="float-left">
-                </div>
-                <div class="col-md-4">
-                    <input v-model.number="id" placeholder="user id" type="number" class="float-right">
+            <div class="row my-2">
+                <div class="col-2"></div>
+                <div class="col-8">
+                    <input v-model="LicensePlate" placeholder="Indtast Nummerplade" class="float-md-left my-2">
+                    <input v-model.number="id" placeholder="Indtast Bruger Id" type="number" class="float-md-right my-2">
                 </div>
                     <!--<v-dropdown :lokationer="lokationer"></v-dropdown>-->
-                <div class="col-md-2"></div>
+                <div class="col-2"></div>
             </div>
         </div>
         
         <!--Sorterings knapper-->
         <div class="container-fluid">
-            <div class="row mt-3">
-                <div class="col-md-2"></div>
-                <div class="col-md-4">
-                    <button v-on:click="getByLicensePlate(LicensePlate)" class="btn btn-info float-left">
+            <div class="row my-2">
+                <div class="col-2"></div>
+                <div class="col-8">
+                    <button v-on:click="getByLicensePlate(LicensePlate)" class="btn btn-info float-md-left my-2">
                         <i class="fa fa-car" aria-hidden="true"></i> Se via nummerplade 
                     </button>
                     <div v-if="SingleLicensePlate">
                         {{SingleLicensePlate.id}} {{SingleLicensePlate.username}} {{SingleLicensePlate.licensePlate}}
                         {{SingleLicensePlate.bookTime}}
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <button v-on:click="getByUserId(id)" class="btn btn-info float-right">
+                    <button v-on:click="getByUserId(id)" class="btn btn-info float-md-right my-2">
                         <i class="fa fa-user" aria-hidden="true"></i> Se via bruger id
                     </button>
                 </div>
-                <div class="col-md-2"></div>
+                <div class="col-2"></div>
             </div>
         </div>
         <!--error message-->
         <div class="container-fluid">
-            <div class="row mt-3">
+            <div class="row my-3">
                 <div class="col-md-12">
                 <div v-if="error" class="alert alert-danger alert-dismissible fade show" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -192,12 +182,12 @@
             <div class="row py-2 mb-1 align-items-center">
                 <div class="col-md-2"></div>
                 <div class="col-md-8 align-items-center">
-                    <input type="text" placeholder="Brugernavn" v-model="Booking.username">
-                    <input type="text" placeholder="P-bås nr" v-model="Booking.parkingId">
-                    <input type="text" placeholder="Nummerplade" v-model="Booking.licensePlate">
-                    <input type="text" placeholder="Stattid" v-model="Booking.startTime">
-                    <input type="text" placeholder="Sluttid" v-model="Booking.endTime">
-                    <input type="number" placeholder="WarningTime" v-model="WarningTime"> 
+                    <input type="text" placeholder="Indtast dit brugernavn" v-model="Booking.username" class="m-2">
+                    <input type="text" placeholder="Indtast ønskede p-bås nr" v-model="Booking.parkingId" class="m-2">
+                    <input type="text" placeholder="Indtast din nummerplade" v-model="Booking.licensePlate" class="m-2">
+                    <input type="text" placeholder="Vælg starttid" v-model="Booking.startTime" class="m-2">
+                    <input type="text" placeholder="Vælg sluttid" v-model="Booking.endTime" class="m-2">
+                    <input type="number" placeholder="WarningTime" v-model="WarningTime" class="m-2"> 
                 </div>
                 <div class="col-md-2"></div>
             </div>
@@ -206,7 +196,7 @@
             <div class="row py-2 mb-4 align-items-center">
                 <div class="col-md-2"></div>
                 <div class="col-md-8 align-items-center">
-                    <button v-on:click="tryAddBooking" class="btn btn-info mt-2">
+                    <button v-on:click="tryAddBooking" class="btn btn-info mx-2">
                         <i class="fa fa-calendar" aria-hidden="true"></i> Tilføj booking
                     </button>  
                 </div>
@@ -220,13 +210,13 @@
                 <div class="col-md-2"></div>
                 <div class="col-md-8 text-center py-5 align-items-center">
                     <p>Følg vores projekt her:</p>
-                    <a href="https://drive.google.com/drive/u/1/folders/1kFrtQS_tvihdgxub6V7ETHzkcOnA7NQL" class="btn btn-info m-1" role="button">
+                    <a href="https://drive.google.com/drive/u/1/folders/1kFrtQS_tvihdgxub6V7ETHzkcOnA7NQL" class="btn btn-info m-2" role="button">
                         <i class="fab fa-google-drive" aria-hidden="true"></i>
                     </a>
-                    <a href="https://github.com/MathiasMeisner/3SemesterREST" class="btn btn-info m-1" role="button">
+                    <a href="https://github.com/MathiasMeisner/3SemesterREST" class="btn btn-info m-2" role="button">
                         <i class="fab fa-github" aria-hidden="true"></i>
                     </a>
-                    <a href="https://trello.com/b/erCuAP5Y/den-r%C3%B8de-gruppe" class="btn btn-info m-1" role="button">
+                    <a href="https://trello.com/b/erCuAP5Y/den-r%C3%B8de-gruppe" class="btn btn-info m-2" role="button">
                         <i class="fab fa-trello" aria-hidden="true"></i>
                     </a>
                 </div>
