@@ -35,7 +35,7 @@
                 style="background-image: url('./Images/Design\ uden\ navn\(7\).png'); height: 100vh; background-size:cover;">
                 <h1 class="text-light position-absolute display-4 py-4" style="top: 39%; left: 50%; transform: translate(-50%, -50%)">Brug for en parkeringsbås?</h1>
                 <button class="btn btn-info text-light font-weight-bold position-absolute px-5" style="top: 55%; left: 50%; transform: translate(-50%, -50%)" type="button">Book plads nu!</button>
-            </div>
+                </div>
             </div>
         </div>
         <!--Input forms-->
@@ -74,12 +74,13 @@
         <div class="container-fluid">
             <div class="row my-3">
                 <div class="col-md-12">
-                <div v-if="error" class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        <span class="sr-only">Close</span>
-                    </button>
-                    <strong>{{error}}</strong> 
+                    <div v-if="error" class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            <span class="sr-only">Close</span>
+                        </button>
+                        <strong>{{error}}</strong> 
+                    </div>
                 </div>
             </div>
         </div>
