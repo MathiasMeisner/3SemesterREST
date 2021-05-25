@@ -41,7 +41,7 @@ namespace _3SemesterREST.Manager
 
         {
 
-            string SelectString = "select * from Bookings where LicensePlate = @licenseplate";
+            string SelectString = $"select * from Bookings where LicensePlate = '{licenseplate}'";
 
 
 
@@ -131,16 +131,20 @@ namespace _3SemesterREST.Manager
         {
 
             int Id = reader.GetInt32(0);
+            
+            string LicensePlate = GuardedGet<string>(reader, 1);
+            
+            DateTime StartTime = GuardedGet<DateTime>(reader, 2);
 
-            int ParkingId = reader.GetInt32(1);
+            DateTime EndTime = GuardedGet<DateTime>(reader, 3);
 
-            string Username = GuardedGet<string>(reader, 2);
+            int ParkingId = reader.GetInt32(4);
 
-            string LicensePlate = GuardedGet<string>(reader, 3);
+            string Username = GuardedGet<string>(reader, 5);
 
-            DateTime StartTime = GuardedGet<DateTime>(reader, 4);
+            
 
-            DateTime EndTime = GuardedGet<DateTime>(reader, 5);
+
 
 
 

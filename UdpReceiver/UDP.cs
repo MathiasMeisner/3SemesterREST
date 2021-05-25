@@ -55,8 +55,8 @@ namespace UdpReceiver
 
                 Console.WriteLine(car.Color + " " + parkinglots.isin + " " + parkinglots.day + " " + car.LicensePlate + " " + parkinglots.ParkingTime);
 
-                Car c = Consumer.PostToCar<Car, Car>("https://localhost:44350/api/cars", car).Result;
-                Parkinglots p = Consumer.PostToparkinglot<Parkinglots, Parkinglots>("https://localhost:44350/api/parkinglots", parkinglots).Result;
+                Car c = Consumer.PostToCar<Car, Car>("https://3semester-denroedegruppe.azurewebsites.net/api/cars", car).Result;
+                Parkinglots p = Consumer.PostToparkinglot<Parkinglots, Parkinglots>("https://3semester-denroedegruppe.azurewebsites.net/api/parkinglots", parkinglots).Result;
 
             }
             catch (Exception e)

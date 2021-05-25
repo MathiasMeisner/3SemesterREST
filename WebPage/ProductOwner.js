@@ -1,5 +1,5 @@
-const baseuri = "https://localhost:44350/api/parkinglots"
-const uriCarcolor = "https://localhost:44350/api/cars/CarColor"
+const baseuri = "https://3semester-denroedegruppe.azurewebsites.net/api/parkinglots"
+const uriCarcolor = "https://3semester-denroedegruppe.azurewebsites.net/api/cars/CarColor"
 
 Vue.createApp({
     data() {

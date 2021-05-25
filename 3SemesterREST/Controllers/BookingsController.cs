@@ -43,9 +43,9 @@ namespace _3SemesterREST.Controllers
         [HttpGet("LicensePlate/{LicensePlate}")]
         [ProducesResponseType(Status200OK)]
         [ProducesResponseType(Status404NotFound)]
-        public ActionResult<Booking> GetByLicensePlate(string licenseplate)
+        public ActionResult<Booking> GetByLicensePlate(string LicensePlate)
         {
-            Booking booking = _bookingManager.GetByLicensePlate(licenseplate);
+            Booking booking = _bookingManager.GetByLicensePlate(LicensePlate);
             return booking;
         }
 

@@ -1,6 +1,6 @@
-const bookingUri = "https://localhost:44350/api/bookings"
-const parkingBoothUri = "https://localhost:44350/api/parkingbooths"
-const parkingLotUri = "https://localhost:44350/api/parkinglots"
+const bookingUri = "https://3semester-denroedegruppe.azurewebsites.net/api/bookings"
+const parkingBoothUri = "https://3semester-denroedegruppe.azurewebsites.net/api/parkingbooths"
+const parkingLotUri = "https://3semester-denroedegruppe.azurewebsites.net/api/parkinglots"
 
 Vue.createApp({
     data() {
